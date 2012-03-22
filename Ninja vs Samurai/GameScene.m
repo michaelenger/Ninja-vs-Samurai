@@ -154,8 +154,11 @@
 #pragma mark FinishedMenuDelegate
 
 - (void)nextAction {
-    // @todo
-    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:self.level]];
+    NSString *level = @"testmap.tmx";
+    if ([self.level compare:level] == 0) {
+        level = @"tinymap.tmx";
+    }
+    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:level]];
 }
 
 - (void)quitAction {
