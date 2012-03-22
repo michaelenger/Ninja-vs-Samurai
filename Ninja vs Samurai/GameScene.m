@@ -153,7 +153,17 @@
 
 #pragma mark FinishedMenuDelegate
 
-- (void)replayAction {
+- (void)nextAction {
+    // @todo
+    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:self.level]];
+}
+
+- (void)quitAction {
+    // @todo
+    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:self.level]];
+}
+
+- (void)retryAction {
     [self show];
 
     // Reset moves count
@@ -162,11 +172,6 @@
     
     // Reset level
     [self.actor reset];
-}
-
-- (void)nextAction {
-    // @todo
-    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:self.level]];
 }
 
 #pragma mark NSObject

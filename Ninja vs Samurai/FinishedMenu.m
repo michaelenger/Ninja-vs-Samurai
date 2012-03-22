@@ -148,18 +148,28 @@
         scrollsLabel.color = FONT_COLOR_LIGHT;
         [self addChild:scrollsLabel];
 
-        // Replay Button
-        CCLabelTTF *replayLabel = [CCLabelTTF labelWithString:@"Replay" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
+        // Quit Button
+        CCLabelTTF *quitLabel = [CCLabelTTF labelWithString:@"Quit" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
+        quitLabel.color = FONT_COLOR;
+        CCMenuItem *quit = [CCMenuItemLabel itemWithLabel:quitLabel block:^(id selector){
+            if (self.delegate && [self.delegate respondsToSelector:@selector(quitAction)]) {
+                [self.delegate quitAction];
+                [self removeFromParentAndCleanup:YES];
+            }
+        }];
+
+        // Retry Button
+        CCLabelTTF *replayLabel = [CCLabelTTF labelWithString:@"Retry" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
         replayLabel.color = FONT_COLOR;
         CCMenuItem *replay = [CCMenuItemLabel itemWithLabel:replayLabel block:^(id selector){
-            if (self.delegate && [self.delegate respondsToSelector:@selector(replayAction)]) {
-                [self.delegate replayAction];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(retryAction)]) {
+                [self.delegate retryAction];
                 [self removeFromParentAndCleanup:YES];
             }
         }];
 
         // Next Level Button
-        CCLabelTTF *nextLabel = [CCLabelTTF labelWithString:@"Next Level" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
+        CCLabelTTF *nextLabel = [CCLabelTTF labelWithString:@"Next" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
         nextLabel.color = FONT_COLOR;
         CCMenuItem *next = [CCMenuItemLabel itemWithLabel:nextLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(nextAction)]) {
@@ -168,8 +178,8 @@
             }
         }];
         
-        self.menu = [CCMenu menuWithItems:replay,next,nil];
-        self.menu.position = ccp(winSize.width / 2,winSize.height * 0.4 / 2);
+        self.menu = [CCMenu menuWithItems:quit,replay,next,nil];
+        self.menu.position = ccp(winSize.width / 2, winSize.height * 0.15);
         [self.menu alignItemsHorizontallyWithPadding:FONT_SIZE_MED];
         [self addChild:self.menu];
     }

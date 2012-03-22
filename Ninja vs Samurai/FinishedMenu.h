@@ -33,9 +33,11 @@
 @protocol FinishedMenuDelegate <NSObject>
 
 @required
-// Replay the level
-- (void)replayAction;
 // Next level
 - (void)nextAction;
+// Quit to the main menu
+- (void)quitAction;
+// Retry the level
+- (void)retryAction;
 
 @end
