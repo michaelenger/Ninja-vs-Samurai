@@ -15,13 +15,18 @@
 @property (strong) CCMenu *menu;
 @property (strong) CCSprite *completedStar;
 @property (strong) CCSprite *scrollsStar;
-@property (strong) CCSprite *parmovesStar;
+@property (strong) CCSprite *movesStar;
 
 // Constructor
 + (FinishedMenu *)menuWithDelegate:(id<FinishedMenuDelegate>)delegate;
 
 // Initialize
 - (id)initWithDelegate:(id<FinishedMenuDelegate>)delegate;
+
+// Toggle stars
+- (void)toggleCompletedStarAnimated:(BOOL)animated;
+- (void)toggleScrollsStarAnimated:(BOOL)animated;
+- (void)toggleMovesStarAnimated:(BOOL)animated;
 
 @end
 

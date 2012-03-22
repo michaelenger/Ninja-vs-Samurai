@@ -15,6 +15,7 @@
 		4C1884FB151B827A00C6DF63 /* FinishedMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1884FA151B827A00C6DF63 /* FinishedMenu.m */; };
 		4C1884FE151B8D8600C6DF63 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1884FD151B8D8400C6DF63 /* Constants.m */; };
 		4C188500151BBBCA00C6DF63 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1884FF151BBBCA00C6DF63 /* star.png */; };
+		4C188502151BC01A00C6DF63 /* star-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C188501151BC01A00C6DF63 /* star-empty.png */; };
 		4C501FD7151A420200C26BF8 /* PlayerActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C501FD6151A420200C26BF8 /* PlayerActor.m */; };
 		4C5ED9A115191CF500FEAD81 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5ED9A015191CF500FEAD81 /* QuartzCore.framework */; };
 		4C5ED9A315191CF500FEAD81 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5ED9A215191CF500FEAD81 /* OpenGLES.framework */; };
@@ -170,6 +171,7 @@
 		4C1884FC151B8D8400C6DF63 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		4C1884FD151B8D8400C6DF63 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4C1884FF151BBBCA00C6DF63 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		4C188501151BC01A00C6DF63 /* star-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-empty.png"; sourceTree = "<group>"; };
 		4C501FD5151A420200C26BF8 /* PlayerActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerActor.h; sourceTree = "<group>"; };
 		4C501FD6151A420200C26BF8 /* PlayerActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerActor.m; sourceTree = "<group>"; };
 		4C5ED99C15191CF500FEAD81 /* Ninja vs Samurai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ninja vs Samurai.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -555,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5EDB4515192DCE00FEAD81 /* testmap.tmx */,
+				4C188501151BC01A00C6DF63 /* star-empty.png */,
 				4C1884FF151BBBCA00C6DF63 /* star.png */,
 				4C1884E4151AC64000C6DF63 /* Graphics */,
 				4C5ED9B415191CF600FEAD81 /* Default.png */,
@@ -1048,6 +1051,7 @@
 				4C1884F5151B766B00C6DF63 /* damage.png in Resources */,
 				4C1884F7151B768C00C6DF63 /* Shojumaru-Regular.ttf in Resources */,
 				4C188500151BBBCA00C6DF63 /* star.png in Resources */,
+				4C188502151BC01A00C6DF63 /* star-empty.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

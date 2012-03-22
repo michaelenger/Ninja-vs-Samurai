@@ -14,7 +14,7 @@
             menu = _menu,
             completedStar = _completedStar,
             scrollsStar = _scrollsStar,
-            parmovesStar = _parmovesStar;
+            movesStar = _movesStar;
 
 #pragma mark Class Methods
 
@@ -31,6 +31,62 @@
     return self;
 }
 
+#pragma mark Instance Methods
+
+- (void)toggleCompletedStarAnimated:(BOOL)animated {
+    CCSprite *star = [CCSprite spriteWithFile:@"star.png"];
+    star.position = self.completedStar.position;
+    [self addChild:star];
+    if (animated) {
+        star.scale = 0;
+        [star runAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.2 scale:1.3],
+                                            [CCScaleTo actionWithDuration:0.1 scale:1],
+                                            [CCCallBlock actionWithBlock:^{
+                                                [self removeChild:self.completedStar cleanup:NO];
+                                                self.completedStar = star;
+                                            }], nil]];
+    } else {
+        [self removeChild:self.completedStar cleanup:NO];
+        self.completedStar = star;
+    }
+}
+
+- (void)toggleScrollsStarAnimated:(BOOL)animated {
+    CCSprite *star = [CCSprite spriteWithFile:@"star.png"];
+    star.position = self.scrollsStar.position;
+    [self addChild:star];
+    if (animated) {
+        star.scale = 0;
+        [star runAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.2 scale:1.3],
+                         [CCScaleTo actionWithDuration:0.1 scale:1],
+                         [CCCallBlock actionWithBlock:^{
+            [self removeChild:self.scrollsStar cleanup:NO];
+            self.scrollsStar = star;
+        }], nil]];
+    } else {
+        [self removeChild:self.scrollsStar cleanup:NO];
+        self.scrollsStar = star;
+    }
+}
+
+- (void)toggleMovesStarAnimated:(BOOL)animated {
+    CCSprite *star = [CCSprite spriteWithFile:@"star.png"];
+    star.position = self.movesStar.position;
+    [self addChild:star];
+    if (animated) {
+        star.scale = 0;
+        [star runAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.2 scale:1.3],
+                         [CCScaleTo actionWithDuration:0.1 scale:1],
+                         [CCCallBlock actionWithBlock:^{
+            [self removeChild:self.movesStar cleanup:NO];
+            self.movesStar = star;
+        }], nil]];
+    } else {
+        [self removeChild:self.movesStar cleanup:NO];
+        self.movesStar = star;
+    }
+}
+
 #pragma mark NSObject
 
 - (id)init {
@@ -43,11 +99,11 @@
                                                    alignment:UITextAlignmentCenter
                                                     fontName:FONT_NAME fontSize:FONT_SIZE_BIG];
         titleLabel.color = FONT_COLOR;
-        titleLabel.position = ccp(winSize.width / 2,winSize.height - (winSize.height * 0.2 / 2));
+        titleLabel.position = ccp(winSize.width / 2,winSize.height - (winSize.height * 0.25 / 2));
         [self addChild:titleLabel];
-        
+
         // Stars
-        self.completedStar = [CCSprite spriteWithFile:@"star.png"];
+        self.completedStar = [CCSprite spriteWithFile:@"star-empty.png"];
         self.completedStar.position = ccp((winSize.width * 0.5) / 2,
                                           winSize.height * 0.55);
         [self addChild:self.completedStar];
@@ -59,9 +115,23 @@
                                       self.completedStar.position.y - self.completedStar.contentSize.height / 2);
         completedLabel.color = FONT_COLOR;
         [self addChild:completedLabel];
+
+        self.movesStar = [CCSprite spriteWithFile:@"star-empty.png"];
+        self.movesStar.position = ccp(winSize.width / 2,
+                                      winSize.height * 0.55);
+        [self addChild:self.movesStar];
+        CCLabelTTF *movesLabel = [CCLabelTTF labelWithString:@"MOVES"
+                                                  dimensions:CGSizeMake(winSize.width, FONT_SIZE_SML)
+                                                   alignment:UITextAlignmentCenter
+                                                    fontName:FONT_NAME fontSize:FONT_SIZE_SML];
         
-        self.scrollsStar = [CCSprite spriteWithFile:@"star.png"];
-        self.scrollsStar.position = ccp(winSize.width / 2,
+        movesLabel.position = ccp(self.movesStar.position.x,
+                                  self.movesStar.position.y - self.movesStar.contentSize.height / 2);
+        movesLabel.color = FONT_COLOR;
+        [self addChild:movesLabel];
+
+        self.scrollsStar = [CCSprite spriteWithFile:@"star-empty.png"];
+        self.scrollsStar.position = ccp(winSize.width - (winSize.width * 0.5) / 2,
                                         winSize.height * 0.55);
         [self addChild:self.scrollsStar];
         CCLabelTTF *scrollsLabel = [CCLabelTTF labelWithString:@"SCROLLS"
@@ -72,20 +142,7 @@
                                     self.scrollsStar.position.y - self.scrollsStar.contentSize.height / 2);
         scrollsLabel.color = FONT_COLOR;
         [self addChild:scrollsLabel];
-        
-        self.parmovesStar = [CCSprite spriteWithFile:@"star.png"];
-        self.parmovesStar.position = ccp(winSize.width - (winSize.width * 0.5) / 2,
-                                          winSize.height * 0.55);
-        [self addChild:self.parmovesStar];
-        CCLabelTTF *parmovesLabel = [CCLabelTTF labelWithString:@"MOVES"
-                                                     dimensions:CGSizeMake(winSize.width, FONT_SIZE_SML)
-                                                      alignment:UITextAlignmentCenter
-                                                       fontName:FONT_NAME fontSize:FONT_SIZE_SML];
-        parmovesLabel.position = ccp(self.parmovesStar.position.x,
-                                     self.parmovesStar.position.y - self.parmovesStar.contentSize.height / 2);
-        parmovesLabel.color = FONT_COLOR;
-        [self addChild:parmovesLabel];
-        
+
         // Replay Button
         CCLabelTTF *replayLabel = [CCLabelTTF labelWithString:@"Replay" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
         replayLabel.color = FONT_COLOR;
@@ -95,7 +152,7 @@
                 [self removeFromParentAndCleanup:YES];
             }
         }];
-        
+
         // Next Level Button
         CCLabelTTF *nextLabel = [CCLabelTTF labelWithString:@"Next Level" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
         nextLabel.color = FONT_COLOR;
@@ -119,7 +176,7 @@
     self.menu = nil;
     self.completedStar = nil;
     self.scrollsStar = nil;
-    self.parmovesStar = nil;
+    self.movesStar = nil;
     [super dealloc];
 }
 

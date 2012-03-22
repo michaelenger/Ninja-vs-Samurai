@@ -62,6 +62,9 @@
 - (void)finished {
     // Show finished menu
     FinishedMenu *finish = [FinishedMenu menuWithDelegate:self];
+    [finish toggleCompletedStarAnimated:YES];
+    [finish toggleScrollsStarAnimated:YES];
+    [finish toggleMovesStarAnimated:YES];
     [self addChild:finish];
 
     // Hide others
