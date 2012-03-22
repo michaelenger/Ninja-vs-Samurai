@@ -66,8 +66,9 @@
                                     [NSNumber numberWithInt:1], @"completed",
                                     [NSNumber numberWithInt:self.ui.moves], @"moves",
                                     [NSNumber numberWithInt:self.actor.playerScrolls], @"scrolls",
-                                    nil];
+                                    [NSNumber numberWithInt:0], @"100%",nil];
     NSMutableDictionary *savedScore = [Storage get:@"testmap.tmx"];
+    BOOL complete = YES;
 
     // Show finished menu
     FinishedMenu *finish = [FinishedMenu menuWithDelegate:self];
@@ -86,6 +87,8 @@
         [finish toggleMovesStarAnimated:NO];
     } else if ([((NSNumber *)[score objectForKey:@"moves"]) intValue] <= moves) {
         [finish toggleMovesStarAnimated:YES];
+    } else {
+        complete = NO;
     }
     
     // Scrolls star
@@ -94,6 +97,8 @@
         [finish toggleScrollsStarAnimated:NO];
     } else if ([((NSNumber *)[score objectForKey:@"scrolls"]) intValue] == scrolls) {
         [finish toggleScrollsStarAnimated:YES];
+    } else {
+        complete = NO;
     }
 
     // Save score
@@ -106,6 +111,9 @@
         if ([((NSNumber *)[savedScore objectForKey:@"scrolls"]) intValue] > [((NSNumber *)[score objectForKey:@"scrolls"]) intValue]) {
             [score setObject:[savedScore objectForKey:@"scrolls"] forKey:@"scrolls"];
         }
+    }
+    if (complete) {
+        [score setObject:[NSNumber numberWithInt:1] forKey:@"100%"];
     }
     [Storage set:score forKey:@"testmap.tmx"];
 
