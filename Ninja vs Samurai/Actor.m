@@ -100,6 +100,12 @@ int const SPEED = 400;
                 distance.y = destination.y - self.position.y;
             }
         }
+        
+        if (distance.x < 0) {
+            self.sprite.flipX = YES;
+        } else if (distance.x > 0) {
+            self.sprite.flipX = NO;
+        }
 
         // Update position
         self.position = ccp(self.position.x + distance.x,
