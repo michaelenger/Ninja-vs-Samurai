@@ -85,9 +85,9 @@ NSMutableArray *_moves;
     for (int i = 0; i < [self.scrolls count]; i++) {
         ScrollActor *scroll = (ScrollActor *)[self.scrolls objectAtIndex:i];
         if (self.player.mapPosition.x == scroll.mapPosition.x && self.player.mapPosition.y == scroll.mapPosition.y) {
-            [self.playerScrolls addObject:scroll];
             [self.scrolls removeObject:scroll];
             [self removeChild:scroll cleanup:YES];
+            self.playerScrolls++;
         }
     }
 
@@ -137,8 +137,8 @@ NSMutableArray *_moves;
     self.exit = nil;
     [self.guards removeAllObjects];
     [self.scrolls removeAllObjects];
-    [self.playerScrolls removeAllObjects];
     [self removeAllChildrenWithCleanup:YES];
+    self.playerScrolls = 0;
 
     // Get the actors
     CCTMXMapInfo *mapInfo = self.map.mapInfo;
@@ -271,7 +271,7 @@ NSMutableArray *_moves;
         // Initialize guard and scroll arrays
         self.guards = [NSMutableArray arrayWithCapacity:0];
         self.scrolls = [NSMutableArray arrayWithCapacity:0];
-        self.playerScrolls = [NSMutableArray arrayWithCapacity:0];
+        self.playerScrolls = 0;
         
         // Handle the update ourself
         [self schedule:@selector(update:)];
@@ -286,7 +286,6 @@ NSMutableArray *_moves;
     self.exit = nil;
     self.guards = nil;
     self.scrolls = nil;
-    self.playerScrolls = nil;
     [super dealloc];
 }
 

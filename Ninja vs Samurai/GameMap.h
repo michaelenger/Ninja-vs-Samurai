@@ -13,6 +13,8 @@
 @property (strong) CCTMXMapInfo *mapInfo;
 @property (strong) CCTMXLayer *actors;
 @property (strong) NSArray *walls;
+@property (assign) unsigned int moves;
+@property (assign) unsigned int scrolls;
 
 // Check whether a position is open (not a wall)
 - (BOOL)isOpen:(CGPoint)position;

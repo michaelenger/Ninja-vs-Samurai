@@ -16,6 +16,7 @@
 		4C1884FE151B8D8600C6DF63 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1884FD151B8D8400C6DF63 /* Constants.m */; };
 		4C188500151BBBCA00C6DF63 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1884FF151BBBCA00C6DF63 /* star.png */; };
 		4C188502151BC01A00C6DF63 /* star-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C188501151BC01A00C6DF63 /* star-empty.png */; };
+		4C188505151BCABC00C6DF63 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C188504151BCABA00C6DF63 /* Storage.m */; };
 		4C501FD7151A420200C26BF8 /* PlayerActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C501FD6151A420200C26BF8 /* PlayerActor.m */; };
 		4C5ED9A115191CF500FEAD81 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5ED9A015191CF500FEAD81 /* QuartzCore.framework */; };
 		4C5ED9A315191CF500FEAD81 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5ED9A215191CF500FEAD81 /* OpenGLES.framework */; };
@@ -172,6 +173,8 @@
 		4C1884FD151B8D8400C6DF63 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4C1884FF151BBBCA00C6DF63 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		4C188501151BC01A00C6DF63 /* star-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-empty.png"; sourceTree = "<group>"; };
+		4C188503151BCAB800C6DF63 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
+		4C188504151BCABA00C6DF63 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		4C501FD5151A420200C26BF8 /* PlayerActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerActor.h; sourceTree = "<group>"; };
 		4C501FD6151A420200C26BF8 /* PlayerActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerActor.m; sourceTree = "<group>"; };
 		4C5ED99C15191CF500FEAD81 /* Ninja vs Samurai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ninja vs Samurai.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -544,6 +547,8 @@
 				4C5EDB2B15191EFE00FEAD81 /* Scenes */,
 				4C1884FC151B8D8400C6DF63 /* Constants.h */,
 				4C1884FD151B8D8400C6DF63 /* Constants.m */,
+				4C188503151BCAB800C6DF63 /* Storage.h */,
+				4C188504151BCABA00C6DF63 /* Storage.m */,
 				4C5EDB2015191CF800FEAD81 /* AppDelegate.h */,
 				4C5EDB2115191CF800FEAD81 /* AppDelegate.m */,
 				4C5ED9B315191CF600FEAD81 /* Resources */,
@@ -1176,6 +1181,7 @@
 				4C1884E8151B545400C6DF63 /* UILayer.m in Sources */,
 				4C1884FB151B827A00C6DF63 /* FinishedMenu.m in Sources */,
 				4C1884FE151B8D8600C6DF63 /* Constants.m in Sources */,
+				4C188505151BCABC00C6DF63 /* Storage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

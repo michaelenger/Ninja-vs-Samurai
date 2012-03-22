@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="40" tileheight="40">
+ <properties>
+  <property name="moves" value="6"/>
+ </properties>
  <tileset firstgid="1" name="spritesheet" tilewidth="40" tileheight="40" spacing="2" margin="2">
   <image source="spritesheet.png" width="256" height="256"/>
   <tile id="0">

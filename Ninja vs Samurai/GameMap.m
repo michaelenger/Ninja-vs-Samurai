@@ -10,15 +10,13 @@
 #import "Path.h"
 
 CGSize winSize;
-typedef struct pathNode {
-CGPoint position;
-unsigned int f;
-} pathNode;
 
 @implementation GameMap
 @synthesize mapInfo = _mapInfo,
             actors = _actors,
-            walls = _walls;
+            walls = _walls,
+            moves = _moves,
+            scrolls = _scrolls;
 
 #pragma mark Instance Methods
 
@@ -90,6 +88,27 @@ unsigned int f;
         if (self.actors) {
             [self removeChild:self.actors cleanup:YES];
         }
+
+        // Determine the success conditions
+        NSString *moves = [self.mapInfo.properties objectForKey:@"moves"];
+        if (moves) {
+            self.moves = [moves intValue];
+        } else {
+            self.moves = 0;
+        }
+        self.scrolls = 0;
+        size = [self.actors layerSize];
+        for (int x = 0; x < size.width; x++) {
+            for (int y = 0; y < size.height; y++) {
+                unsigned int gid = [self.actors tileGIDAt:ccp(x, y)];
+                NSDictionary *info = [self.mapInfo.tileProperties objectForKey:[NSNumber numberWithInt:gid]];
+                NSString *actorName = [info valueForKey:@"actor"];
+                if (actorName && [actorName compare:@"scroll"] == 0) {
+                    self.scrolls++;
+                }
+            }
+        }
+        
     }
     return self;
 }

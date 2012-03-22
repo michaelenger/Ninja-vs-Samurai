@@ -18,7 +18,7 @@
 @property (strong) ExitActor *exit;
 @property (strong) NSMutableArray *guards;
 @property (strong) NSMutableArray *scrolls;
-@property (strong) NSMutableArray *playerScrolls;
+@property (assign) unsigned int playerScrolls;
 @property (assign) BOOL pause;
 
 // Constructors

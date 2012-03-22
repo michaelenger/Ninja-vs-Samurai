@@ -12,6 +12,7 @@
 #import "FinishedMenu.h"
 #import "GameMap.h"
 #import "MapLayer.h"
+#import "Storage.h"
 #import "UILayer.h"
 
 @implementation GameScene
@@ -60,12 +61,53 @@
 }
 
 - (void)finished {
+    // Get score
+    NSMutableDictionary *score = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                    [NSNumber numberWithInt:1], @"completed",
+                                    [NSNumber numberWithInt:self.ui.moves], @"moves",
+                                    [NSNumber numberWithInt:self.actor.playerScrolls], @"scrolls",
+                                    nil];
+    NSMutableDictionary *savedScore = [Storage get:@"testmap.tmx"];
+
     // Show finished menu
     FinishedMenu *finish = [FinishedMenu menuWithDelegate:self];
-    [finish toggleCompletedStarAnimated:YES];
-    [finish toggleScrollsStarAnimated:YES];
-    [finish toggleMovesStarAnimated:YES];
     [self addChild:finish];
+    
+    // Completed star
+    if (savedScore && [((NSNumber *)[savedScore objectForKey:@"completed"]) intValue] == 1) {
+        [finish toggleCompletedStarAnimated:NO];
+    } else {
+        [finish toggleCompletedStarAnimated:YES];
+    }
+    
+    // Moves star
+    unsigned int moves = self.actor.map.moves;
+    if (savedScore && [((NSNumber *)[savedScore objectForKey:@"moves"]) intValue] <= moves) {
+        [finish toggleMovesStarAnimated:NO];
+    } else if ([((NSNumber *)[score objectForKey:@"moves"]) intValue] <= moves) {
+        [finish toggleMovesStarAnimated:YES];
+    }
+    
+    // Scrolls star
+    unsigned int scrolls = self.actor.map.scrolls;
+    if (savedScore && [((NSNumber *)[savedScore objectForKey:@"scrolls"]) intValue] == scrolls) {
+        [finish toggleScrollsStarAnimated:NO];
+    } else if ([((NSNumber *)[score objectForKey:@"scrolls"]) intValue] == scrolls) {
+        [finish toggleScrollsStarAnimated:YES];
+    }
+
+    // Save score
+    if (savedScore) {
+        // Moves
+        if ([((NSNumber *)[savedScore objectForKey:@"moves"]) intValue] < [((NSNumber *)[score objectForKey:@"moves"]) intValue]) {
+            [score setObject:[savedScore objectForKey:@"moves"] forKey:@"moves"];
+        }
+        // Scrolls
+        if ([((NSNumber *)[savedScore objectForKey:@"scrolls"]) intValue] > [((NSNumber *)[score objectForKey:@"scrolls"]) intValue]) {
+            [score setObject:[savedScore objectForKey:@"scrolls"] forKey:@"scrolls"];
+        }
+    }
+    [Storage set:score forKey:@"testmap.tmx"];
 
     // Hide others
     [self hide];
