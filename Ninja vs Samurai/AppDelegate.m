@@ -83,7 +83,7 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"spritesheet.plist"];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [GameScene scene]];
+	[director_ pushScene: [GameScene sceneWithLevel:@"testmap.tmx"]];
 
 	return YES;
 }

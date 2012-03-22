@@ -17,9 +17,13 @@
 @property (strong) BackgroundLayer *background;
 @property (strong) MapLayer *map;
 @property (strong) UILayer *ui;
+@property (strong) NSString *level;
 
 // Constructor
-+ (GameScene *)scene;
++ (GameScene *)sceneWithLevel:(NSString *)level;
+
+// Initialize
+- (id)initWithLevel:(NSString *)level;
 
 // Hide/show game elements
 - (void)hide;

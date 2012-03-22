@@ -19,12 +19,42 @@
 @synthesize actor = _actor,
             background = _background,
             map = _map,
-            ui = _ui;
+            ui = _ui,
+            level = _level;
 
 #pragma mark Class Methods
 
-+ (GameScene *)scene {
-    return [self node];
++ (GameScene *)sceneWithLevel:(NSString *)level {
+    return [[[self alloc] initWithLevel:level] autorelease];
+}
+
+#pragma mark Initialize
+
+- (id)initWithLevel:(NSString *)level {
+    if ((self = [self init])) {
+        self.level = level;
+        GameMap *map = [[GameMap tiledMapWithTMXFile:level] retain];
+        
+        // Background
+        self.background = [BackgroundLayer layer];
+        [self addChild:self.background];
+        
+        // Map
+        self.map = [MapLayer layerWithMap:map];
+        [self addChild:self.map];
+        
+        // Actors
+        self.actor = [ActorLayer layerWithMap:map];
+        self.actor.delegate = self;
+        [self addChild:self.actor];
+        
+        // UI
+        self.ui = [UILayer layer];
+        [self addChild:self.ui];
+        
+        [map release];
+    }
+    return self;
 }
 
 #pragma mark Instance Methods
@@ -67,7 +97,7 @@
                                     [NSNumber numberWithInt:self.ui.moves], @"moves",
                                     [NSNumber numberWithInt:self.actor.playerScrolls], @"scrolls",
                                     [NSNumber numberWithInt:0], @"100%",nil];
-    NSMutableDictionary *savedScore = [Storage get:@"testmap.tmx"];
+    NSMutableDictionary *savedScore = [Storage get:self.level];
     BOOL complete = YES;
 
     // Show finished menu
@@ -115,7 +145,7 @@
     if (complete) {
         [score setObject:[NSNumber numberWithInt:1] forKey:@"100%"];
     }
-    [Storage set:score forKey:@"testmap.tmx"];
+    [Storage set:score forKey:self.level];
 
     // Hide others
     [self hide];
@@ -136,42 +166,17 @@
 
 - (void)nextAction {
     // @todo
-    [self replayAction];
+    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:self.level]];
 }
 
 #pragma mark NSObject
-
-- (id)init {
-    if ((self = [super init])) {
-        GameMap *map = [[GameMap tiledMapWithTMXFile:@"testmap.tmx"] retain];
-        
-        // Background
-        self.background = [BackgroundLayer layer];
-        [self addChild:self.background];
-        
-        // Map
-        self.map = [MapLayer layerWithMap:map];
-        [self addChild:self.map];
-        
-        // Actors
-        self.actor = [ActorLayer layerWithMap:map];
-        self.actor.delegate = self;
-        [self addChild:self.actor];
-        
-        // UI
-        self.ui = [UILayer layer];
-        [self addChild:self.ui];
-        
-        [map release];
-    }
-    return self;
-}
 
 - (void)dealloc {
     self.actor = nil;
     self.background = nil;
     self.map = nil;
     self.ui = nil;
+    self.level = nil;
     [super dealloc];
 }
 

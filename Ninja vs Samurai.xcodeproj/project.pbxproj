@@ -503,6 +503,14 @@
 			name = Menus;
 			sourceTree = "<group>";
 		};
+		4C188506151BDFB600C6DF63 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				4C5EDB4515192DCE00FEAD81 /* testmap.tmx */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
 		4C5ED99115191CF500FEAD81 = {
 			isa = PBXGroup;
 			children = (
@@ -561,7 +569,7 @@
 		4C5ED9B315191CF600FEAD81 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4C5EDB4515192DCE00FEAD81 /* testmap.tmx */,
+				4C188506151BDFB600C6DF63 /* Levels */,
 				4C188501151BC01A00C6DF63 /* star-empty.png */,
 				4C1884FF151BBBCA00C6DF63 /* star.png */,
 				4C1884E4151AC64000C6DF63 /* Graphics */,
