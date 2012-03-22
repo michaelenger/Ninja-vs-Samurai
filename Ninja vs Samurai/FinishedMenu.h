@@ -13,6 +13,9 @@
 
 @property (strong) id<FinishedMenuDelegate> delegate;
 @property (strong) CCMenu *menu;
+@property (strong) CCSprite *completedStar;
+@property (strong) CCSprite *scrollsStar;
+@property (strong) CCSprite *parmovesStar;
 
 // Constructor
 + (FinishedMenu *)menuWithDelegate:(id<FinishedMenuDelegate>)delegate;

@@ -9,7 +9,7 @@
 #import "Constants.h"
 
 NSString * const FONT_NAME = @"Shojumaru-Regular";
-unsigned int const FONT_SIZE_BIG = 52;
+unsigned int const FONT_SIZE_BIG = 54;
 unsigned int const FONT_SIZE_MED = 32;
 unsigned int const FONT_SIZE_SML = 16;
 ccColor3B const FONT_COLOR = { 137,134,117 };
