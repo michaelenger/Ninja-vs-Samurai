@@ -8,8 +8,8 @@
 
 #import "Constants.h"
 
-NSString * const FONT_NAME = @"Marker Felt";
-unsigned int const FONT_SIZE_BIG = 68;
-unsigned int const FONT_SIZE_MED = 42;
-unsigned int const FONT_SIZE_SML = 26;
+NSString * const FONT_NAME = @"Shojumaru-Regular";
+unsigned int const FONT_SIZE_BIG = 52;
+unsigned int const FONT_SIZE_MED = 32;
+unsigned int const FONT_SIZE_SML = 16;
 ccColor3B const FONT_COLOR = { 137,134,117 };
