@@ -21,4 +21,8 @@
 // Constructor
 + (GameScene *)scene;
 
+// Hide/show game elements
+- (void)hide;
+- (void)show;
+
 @end

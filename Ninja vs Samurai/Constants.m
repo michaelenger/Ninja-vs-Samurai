@@ -9,5 +9,7 @@
 #import "Constants.h"
 
 NSString * const FONT_NAME = @"Marker Felt";
-unsigned int const FONT_SIZE = 50;
+unsigned int const FONT_SIZE_BIG = 68;
+unsigned int const FONT_SIZE_MED = 42;
+unsigned int const FONT_SIZE_SML = 26;
 ccColor3B const FONT_COLOR = { 137,134,117 };

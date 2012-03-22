@@ -26,6 +26,20 @@
     return [self node];
 }
 
+#pragma mark Instance Methods
+
+- (void)hide {
+    [self removeChild:self.actor cleanup:NO];
+    [self removeChild:self.map cleanup:NO];
+    [self removeChild:self.ui cleanup:NO];
+}
+
+- (void)show {
+    [self addChild:self.map];
+    [self addChild:self.actor];
+    [self addChild:self.ui];
+}
+
 #pragma mark ActorDelegate
 
 - (void)nextTurn {
@@ -49,11 +63,16 @@
     // Show finished menu
     FinishedMenu *finish = [FinishedMenu menuWithDelegate:self];
     [self addChild:finish];
+
+    // Hide others
+    [self hide];
 }
 
 #pragma mark FinishedMenuDelegate
 
 - (void)replayAction {
+    [self show];
+
     // Reset moves count
     self.ui.moves = 0;
     [self.ui update];

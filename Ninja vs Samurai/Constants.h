@@ -10,5 +10,7 @@
 
 // Font styles
 extern NSString * const FONT_NAME;
-extern unsigned int const FONT_SIZE;
+extern unsigned int const FONT_SIZE_BIG;
+extern unsigned int const FONT_SIZE_MED;
+extern unsigned int const FONT_SIZE_SML;
 extern ccColor3B const FONT_COLOR;

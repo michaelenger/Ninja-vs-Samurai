@@ -32,8 +32,19 @@
 
 - (id)init {
     if ((self = [super init])) {
-        // Replay
-        CCLabelTTF *replayLabel = [CCLabelTTF labelWithString:@"Replay" fontName:FONT_NAME fontSize:FONT_SIZE];
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+
+        // Title
+        CCLabelTTF *titleLabel = [CCLabelTTF labelWithString:@"Success"
+                                                  dimensions:CGSizeMake(winSize.width, FONT_SIZE_BIG)
+                                                   alignment:UITextAlignmentCenter
+                                                    fontName:FONT_NAME fontSize:FONT_SIZE_BIG];
+        titleLabel.color = FONT_COLOR;
+        titleLabel.position = ccp(winSize.width / 2,winSize.height - (winSize.height * 0.4 / 2));
+        [self addChild:titleLabel];
+        
+        // Replay Button
+        CCLabelTTF *replayLabel = [CCLabelTTF labelWithString:@"Replay" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
         replayLabel.color = FONT_COLOR;
         CCMenuItem *replay = [CCMenuItemLabel itemWithLabel:replayLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(replayAction)]) {
@@ -42,8 +53,8 @@
             }
         }];
         
-        // Next Level
-        CCLabelTTF *nextLabel = [CCLabelTTF labelWithString:@"Next Level" fontName:FONT_NAME fontSize:FONT_SIZE];
+        // Next Level Button
+        CCLabelTTF *nextLabel = [CCLabelTTF labelWithString:@"Next Level" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
         nextLabel.color = FONT_COLOR;
         CCMenuItem *next = [CCMenuItemLabel itemWithLabel:nextLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(nextAction)]) {
@@ -53,7 +64,8 @@
         }];
         
         self.menu = [CCMenu menuWithItems:replay,next,nil];
-        [self.menu alignItemsHorizontallyWithPadding:10];
+        self.menu.position = ccp(winSize.width / 2,winSize.height * 0.4 / 2);
+        [self.menu alignItemsHorizontallyWithPadding:FONT_SIZE_MED];
         [self addChild:self.menu];
     }
     return self;

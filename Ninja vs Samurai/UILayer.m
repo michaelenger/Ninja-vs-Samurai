@@ -39,13 +39,13 @@
         // Moves label
         self.moves = 0;
         self.movesLabel = [CCLabelTTF labelWithString:@""
-                                           dimensions:CGSizeMake(self.contentSize.width-(FONT_SIZE / 2), FONT_SIZE)
+                                           dimensions:CGSizeMake(self.contentSize.width-(FONT_SIZE_BIG / 2), FONT_SIZE_BIG)
                                             alignment:UITextAlignmentRight
                                              fontName:FONT_NAME
-                                             fontSize:FONT_SIZE];
+                                             fontSize:FONT_SIZE_BIG];
         self.movesLabel.color = FONT_COLOR;
         self.movesLabel.position = ccp(self.contentSize.width/2,
-                                       self.contentSize.height-(FONT_SIZE / 2));
+                                       self.contentSize.height-(FONT_SIZE_BIG / 2));
         [self addChild:self.movesLabel];
 
         // Damage splash sprite
