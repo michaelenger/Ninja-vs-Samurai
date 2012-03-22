@@ -92,6 +92,11 @@
 - (id)init {
     if ((self = [super init])) {
         CGSize winSize = [CCDirector sharedDirector].winSize;
+        
+        // Overlay
+        CCSprite *overlay = [CCSprite spriteWithFile:@"overlay.png"];
+        overlay.position = ccp(winSize.width / 2, winSize.height / 2);
+        [self addChild:overlay];
 
         // Title
         CCLabelTTF *titleLabel = [CCLabelTTF labelWithString:@"Success"
@@ -107,40 +112,40 @@
         self.completedStar.position = ccp((winSize.width * 0.5) / 2,
                                           winSize.height * 0.55);
         [self addChild:self.completedStar];
-        CCLabelTTF *completedLabel = [CCLabelTTF labelWithString:@"COMPLETED"
-                                                      dimensions:CGSizeMake(winSize.width, FONT_SIZE_SML)
+        CCLabelTTF *completedLabel = [CCLabelTTF labelWithString:@"COMPLETED LEVEL"
+                                                      dimensions:CGSizeMake(self.completedStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)
                                                        alignment:UITextAlignmentCenter
                                                         fontName:FONT_NAME fontSize:FONT_SIZE_SML];
         completedLabel.position = ccp(self.completedStar.position.x,
-                                      self.completedStar.position.y - self.completedStar.contentSize.height / 2);
-        completedLabel.color = FONT_COLOR;
+                                      self.completedStar.position.y - (self.completedStar.contentSize.height * 0.6));
+        completedLabel.color = FONT_COLOR_LIGHT;
         [self addChild:completedLabel];
 
         self.movesStar = [CCSprite spriteWithFile:@"star-empty.png"];
         self.movesStar.position = ccp(winSize.width / 2,
                                       winSize.height * 0.55);
         [self addChild:self.movesStar];
-        CCLabelTTF *movesLabel = [CCLabelTTF labelWithString:@"MOVES"
-                                                  dimensions:CGSizeMake(winSize.width, FONT_SIZE_SML)
+        CCLabelTTF *movesLabel = [CCLabelTTF labelWithString:@"UNDER PAR MOVES"
+                                                  dimensions:CGSizeMake(self.movesStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)
                                                    alignment:UITextAlignmentCenter
                                                     fontName:FONT_NAME fontSize:FONT_SIZE_SML];
         
         movesLabel.position = ccp(self.movesStar.position.x,
-                                  self.movesStar.position.y - self.movesStar.contentSize.height / 2);
-        movesLabel.color = FONT_COLOR;
+                                  self.movesStar.position.y - (self.movesStar.contentSize.height * 0.6));
+        movesLabel.color = FONT_COLOR_LIGHT;
         [self addChild:movesLabel];
 
         self.scrollsStar = [CCSprite spriteWithFile:@"star-empty.png"];
         self.scrollsStar.position = ccp(winSize.width - (winSize.width * 0.5) / 2,
                                         winSize.height * 0.55);
         [self addChild:self.scrollsStar];
-        CCLabelTTF *scrollsLabel = [CCLabelTTF labelWithString:@"SCROLLS"
-                                                    dimensions:CGSizeMake(winSize.width, FONT_SIZE_SML)
+        CCLabelTTF *scrollsLabel = [CCLabelTTF labelWithString:@"GOT ALL SCROLLS"
+                                                    dimensions:CGSizeMake(self.scrollsStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)
                                                      alignment:UITextAlignmentCenter
                                                       fontName:FONT_NAME fontSize:FONT_SIZE_SML];
         scrollsLabel.position = ccp(self.scrollsStar.position.x,
-                                    self.scrollsStar.position.y - self.scrollsStar.contentSize.height / 2);
-        scrollsLabel.color = FONT_COLOR;
+                                    self.scrollsStar.position.y - (self.scrollsStar.contentSize.height * 0.6));
+        scrollsLabel.color = FONT_COLOR_LIGHT;
         [self addChild:scrollsLabel];
 
         // Replay Button
