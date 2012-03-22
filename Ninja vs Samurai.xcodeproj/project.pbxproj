@@ -12,6 +12,8 @@
 		4C1884E8151B545400C6DF63 /* UILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1884E7151B545400C6DF63 /* UILayer.m */; };
 		4C1884F5151B766B00C6DF63 /* damage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1884F4151B766B00C6DF63 /* damage.png */; };
 		4C1884F7151B768C00C6DF63 /* Shojumaru-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C1884F6151B768C00C6DF63 /* Shojumaru-Regular.ttf */; };
+		4C1884FB151B827A00C6DF63 /* FinishedMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1884FA151B827A00C6DF63 /* FinishedMenu.m */; };
+		4C1884FE151B8D8600C6DF63 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1884FD151B8D8400C6DF63 /* Constants.m */; };
 		4C501FD7151A420200C26BF8 /* PlayerActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C501FD6151A420200C26BF8 /* PlayerActor.m */; };
 		4C5ED9A115191CF500FEAD81 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5ED9A015191CF500FEAD81 /* QuartzCore.framework */; };
 		4C5ED9A315191CF500FEAD81 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5ED9A215191CF500FEAD81 /* OpenGLES.framework */; };
@@ -162,6 +164,10 @@
 		4C1884E7151B545400C6DF63 /* UILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILayer.m; sourceTree = "<group>"; };
 		4C1884F4151B766B00C6DF63 /* damage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = damage.png; sourceTree = "<group>"; };
 		4C1884F6151B768C00C6DF63 /* Shojumaru-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shojumaru-Regular.ttf"; sourceTree = "<group>"; };
+		4C1884F9151B827A00C6DF63 /* FinishedMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishedMenu.h; sourceTree = "<group>"; };
+		4C1884FA151B827A00C6DF63 /* FinishedMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishedMenu.m; sourceTree = "<group>"; };
+		4C1884FC151B8D8400C6DF63 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		4C1884FD151B8D8400C6DF63 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4C501FD5151A420200C26BF8 /* PlayerActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerActor.h; sourceTree = "<group>"; };
 		4C501FD6151A420200C26BF8 /* PlayerActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerActor.m; sourceTree = "<group>"; };
 		4C5ED99C15191CF500FEAD81 /* Ninja vs Samurai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ninja vs Samurai.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -481,6 +487,15 @@
 			name = Graphics;
 			sourceTree = "<group>";
 		};
+		4C1884F8151B826700C6DF63 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				4C1884F9151B827A00C6DF63 /* FinishedMenu.h */,
+				4C1884FA151B827A00C6DF63 /* FinishedMenu.m */,
+			);
+			name = Menus;
+			sourceTree = "<group>";
+		};
 		4C5ED99115191CF500FEAD81 = {
 			isa = PBXGroup;
 			children = (
@@ -517,11 +532,14 @@
 		4C5ED9B215191CF600FEAD81 /* Ninja vs Samurai */ = {
 			isa = PBXGroup;
 			children = (
+				4C1884F8151B826700C6DF63 /* Menus */,
 				4C72E161151A503900FC463B /* A* */,
 				4C5EDB4B15193DA200FEAD81 /* Actors */,
 				4C5EDB2C15191F0900FEAD81 /* Layers */,
 				4C5EDB84151946EB00FEAD81 /* Nodes */,
 				4C5EDB2B15191EFE00FEAD81 /* Scenes */,
+				4C1884FC151B8D8400C6DF63 /* Constants.h */,
+				4C1884FD151B8D8400C6DF63 /* Constants.m */,
 				4C5EDB2015191CF800FEAD81 /* AppDelegate.h */,
 				4C5EDB2115191CF800FEAD81 /* AppDelegate.m */,
 				4C5ED9B315191CF600FEAD81 /* Resources */,
@@ -1148,6 +1166,8 @@
 				4C1884E0151ABD8100C6DF63 /* ScrollActor.m in Sources */,
 				4C1884E3151ABEB000C6DF63 /* ExitActor.m in Sources */,
 				4C1884E8151B545400C6DF63 /* UILayer.m in Sources */,
+				4C1884FB151B827A00C6DF63 /* FinishedMenu.m in Sources */,
+				4C1884FE151B8D8600C6DF63 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

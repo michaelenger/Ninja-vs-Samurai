@@ -32,7 +32,8 @@ NSMutableArray *_moves;
             exit = _exit,
             guards = _guards,
             scrolls = _scrolls,
-            playerScrolls = _playerScrolls;
+            playerScrolls = _playerScrolls,
+            pause = _pause;
 
 #pragma mark Class Methods
 
@@ -57,12 +58,16 @@ NSMutableArray *_moves;
 #pragma mark Instance Methods
 
 - (void)fail {
+    self.pause = YES;
+
     // Delegate callback
     if ([self.delegate respondsToSelector:@selector(failed)])
         [self.delegate failed];
 }
 
 - (void)finish {
+    self.pause = YES;
+
     // Delegate callback
     if ([self.delegate respondsToSelector:@selector(finished)])
         [self.delegate finished];
@@ -73,7 +78,7 @@ NSMutableArray *_moves;
     if (self.player && self.exit
         && self.player.mapPosition.x == self.exit.mapPosition.x
         && self.player.mapPosition.y == self.exit.mapPosition.y) {
-        [self finish];
+        return [self finish];
     }
 
     // Pickup scrolls
@@ -91,7 +96,7 @@ NSMutableArray *_moves;
         GuardActor *guard = (GuardActor *)[self.guards objectAtIndex:i];
         if ([guard canSee:self.player.mapPosition]) {
             // @todo: cut animation
-            [self fail];
+            return [self fail];
         }
     }
 
@@ -194,9 +199,14 @@ NSMutableArray *_moves;
     for (int i = 0; i < [self.guards count]; i++) {
         [self addChild:[self.guards objectAtIndex:i]];
     }
+
+    // Unpause
+    self.pause = NO;
 }
 
 - (void)update:(ccTime)dt {
+    if (self.pause) return;
+
     if (self.player.ready) {
         [self nextTurn];
     }
@@ -214,6 +224,8 @@ NSMutableArray *_moves;
 #pragma mark CCTargetedTouchDelegate
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    if (self.pause) return NO;
+
     // Prevent touches when in the middle of moving
     if (_moves) {
         return NO;

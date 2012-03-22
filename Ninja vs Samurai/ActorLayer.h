@@ -19,6 +19,7 @@
 @property (strong) NSMutableArray *guards;
 @property (strong) NSMutableArray *scrolls;
 @property (strong) NSMutableArray *playerScrolls;
+@property (assign) BOOL pause;
 
 // Constructors
 + (ActorLayer *)layer;

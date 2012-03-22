@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "ActorLayer.h"
 #import "BackgroundLayer.h"
+#import "FinishedMenu.h"
 #import "GameMap.h"
 #import "MapLayer.h"
 #import "UILayer.h"
@@ -45,14 +46,25 @@
 }
 
 - (void)finished {
-    // @todo: show finish screen
+    // Show finished menu
+    FinishedMenu *finish = [FinishedMenu menuWithDelegate:self];
+    [self addChild:finish];
+}
 
+#pragma mark FinishedMenuDelegate
+
+- (void)replayAction {
     // Reset moves count
     self.ui.moves = 0;
     [self.ui update];
     
     // Reset level
     [self.actor reset];
+}
+
+- (void)nextAction {
+    // @todo
+    [self replayAction];
 }
 
 #pragma mark NSObject

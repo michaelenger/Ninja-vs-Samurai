@@ -7,9 +7,7 @@
 //
 
 #import "UILayer.h"
-
-NSString * const FONTNAME = @"Marker Felt"; // @todo: custom font
-unsigned int const FONTSIZE = 50;
+#import "Constants.h"
 
 @implementation UILayer
 @synthesize damageIndicator = _damageIndicator,
@@ -41,13 +39,13 @@ unsigned int const FONTSIZE = 50;
         // Moves label
         self.moves = 0;
         self.movesLabel = [CCLabelTTF labelWithString:@""
-                                           dimensions:CGSizeMake(self.contentSize.width-(FONTSIZE / 2), FONTSIZE)
+                                           dimensions:CGSizeMake(self.contentSize.width-(FONT_SIZE / 2), FONT_SIZE)
                                             alignment:UITextAlignmentRight
-                                             fontName:FONTNAME
-                                             fontSize:FONTSIZE];
-        self.movesLabel.color = ccc3(137,134,117);
+                                             fontName:FONT_NAME
+                                             fontSize:FONT_SIZE];
+        self.movesLabel.color = FONT_COLOR;
         self.movesLabel.position = ccp(self.contentSize.width/2,
-                                       self.contentSize.height-(FONTSIZE / 2));
+                                       self.contentSize.height-(FONT_SIZE / 2));
         [self addChild:self.movesLabel];
 
         // Damage splash sprite

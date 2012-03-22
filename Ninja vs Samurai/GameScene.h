@@ -8,9 +8,10 @@
 
 #import "cocos2d.h"
 #import "ActorLayer.h"
+#import "FinishedMenu.h"
 
 @class ActorLayer, BackgroundLayer, MapLayer, UILayer;
-@interface GameScene : CCScene <ActorDelegate>
+@interface GameScene : CCScene <ActorDelegate, FinishedMenuDelegate>
 
 @property (strong) ActorLayer *actor;
 @property (strong) BackgroundLayer *background;
