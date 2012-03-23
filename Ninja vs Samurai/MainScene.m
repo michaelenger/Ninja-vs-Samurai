@@ -10,11 +10,13 @@
 #import "BackgroundLayer.h"
 #import "Constants.h"
 #import "GameScene.h"
+#import "Settings.h"
 #import "SimpleAudioEngine.h"
 
 @implementation MainScene
 @synthesize creditsMenu = _creditsMenu,
-mainMenu = _mainMenu;
+            mainMenu = _mainMenu,
+            settingsMenu = _settingsMenu;
 
 #pragma mark Class Methods
 
@@ -22,17 +24,20 @@ mainMenu = _mainMenu;
     return [self node];
 }
 
-#pragma mark CreditsMenuDelegate
+#pragma mark CreditsMenuDelegate/SettingsMenuDelegate
 
 - (void)backAction {
     self.creditsMenu.visible = NO;
+    self.settingsMenu.visible = NO;
     self.mainMenu.visible = YES;
 }
 
 #pragma mark MainMenuDelegate
 
 - (void)creditsAction {
-    [[SimpleAudioEngine sharedEngine] playEffect:@"startgame.mp3"];
+    if ([Settings instance].effects) {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"startgame.mp3"];
+    }
     self.mainMenu.visible = NO;
     self.creditsMenu.visible = YES;
 }
@@ -43,7 +48,8 @@ mainMenu = _mainMenu;
 }
 
 - (void)settingsAction {
-    // @todo
+    self.mainMenu.visible = NO;
+    self.settingsMenu.visible = YES;
 }
 
 #pragma mark NSObject
@@ -57,6 +63,11 @@ mainMenu = _mainMenu;
         self.mainMenu = [MainMenu menuWithDelegate:self];
         [self addChild:self.mainMenu];
 
+        // Settings menu
+        self.settingsMenu = [SettingsMenu menuWithDelegate:self];
+        self.settingsMenu.visible = NO;
+        [self addChild:self.settingsMenu];
+
         // Credits menu
         self.creditsMenu = [CreditsMenu menuWithDelegate:self];
         self.creditsMenu.visible = NO;
@@ -65,6 +76,9 @@ mainMenu = _mainMenu;
         // Audio
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"startgame.mp3"];
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"music-menu.mp3" loop:YES];
+        if (![Settings instance].music) {
+            [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
+        }
     }
     return self;
 }
@@ -72,6 +86,7 @@ mainMenu = _mainMenu;
 - (void)dealloc {
     self.creditsMenu = nil;
     self.mainMenu = nil;
+    self.settingsMenu = nil;
     [super dealloc];
 }
 

@@ -9,11 +9,13 @@
 #import "cocos2d.h"
 #import "CreditsMenu.h"
 #import "MainMenu.h"
+#import "SettingsMenu.h"
 
-@interface MainScene : CCScene <CreditsMenuDelegate, MainMenuDelegate>
+@interface MainScene : CCScene <CreditsMenuDelegate, MainMenuDelegate, SettingsMenuDelegate>
 
 @property (strong) CreditsMenu *creditsMenu;
 @property (strong) MainMenu *mainMenu;
+@property (strong) SettingsMenu *settingsMenu;
 
 // Constructor
 + (MainScene *)scene;

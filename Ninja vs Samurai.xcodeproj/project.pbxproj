@@ -169,6 +169,8 @@
 		4C72E165151A504F00FC463B /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72E164151A504F00FC463B /* Path.m */; };
 		4C72E168151A513500FC463B /* PathNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72E167151A513500FC463B /* PathNode.m */; };
 		4C72E16B151A7A7D00FC463B /* GuardActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C72E16A151A7A7D00FC463B /* GuardActor.m */; };
+		4C7375A3151C32F20012059E /* SettingsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7375A2151C32F20012059E /* SettingsMenu.m */; };
+		4CFF8837151C39BF00833767 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFF8836151C39BF00833767 /* Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -487,6 +489,10 @@
 		4C72E167151A513500FC463B /* PathNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathNode.m; sourceTree = "<group>"; };
 		4C72E169151A7A7D00FC463B /* GuardActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardActor.h; sourceTree = "<group>"; };
 		4C72E16A151A7A7D00FC463B /* GuardActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardActor.m; sourceTree = "<group>"; };
+		4C7375A1151C32F20012059E /* SettingsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsMenu.h; sourceTree = "<group>"; };
+		4C7375A2151C32F20012059E /* SettingsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsMenu.m; sourceTree = "<group>"; };
+		4CFF8835151C39BF00833767 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		4CFF8836151C39BF00833767 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +545,8 @@
 				4C188515151C079600C6DF63 /* MainMenu.m */,
 				4C18850E151BFB0300C6DF63 /* ResultsMenu.h */,
 				4C18850F151BFB0300C6DF63 /* ResultsMenu.m */,
+				4C7375A1151C32F20012059E /* SettingsMenu.h */,
+				4C7375A2151C32F20012059E /* SettingsMenu.m */,
 			);
 			name = Menus;
 			sourceTree = "<group>";
@@ -611,6 +619,8 @@
 				4C1884FD151B8D8400C6DF63 /* Constants.m */,
 				4C188503151BCAB800C6DF63 /* Storage.h */,
 				4C188504151BCABA00C6DF63 /* Storage.m */,
+				4CFF8835151C39BF00833767 /* Settings.h */,
+				4CFF8836151C39BF00833767 /* Settings.m */,
 				4C5EDB2015191CF800FEAD81 /* AppDelegate.h */,
 				4C5EDB2115191CF800FEAD81 /* AppDelegate.m */,
 				4C5ED9B315191CF600FEAD81 /* Resources */,
@@ -1260,6 +1270,8 @@
 				4C188513151C073300C6DF63 /* MainScene.m in Sources */,
 				4C188516151C079600C6DF63 /* MainMenu.m in Sources */,
 				4C18852E151C249700C6DF63 /* CreditsMenu.m in Sources */,
+				4C7375A3151C32F20012059E /* SettingsMenu.m in Sources */,
+				4CFF8837151C39BF00833767 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
