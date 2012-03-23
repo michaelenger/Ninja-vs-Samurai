@@ -19,6 +19,8 @@
 		4C188505151BCABC00C6DF63 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C188504151BCABA00C6DF63 /* Storage.m */; };
 		4C188508151BE7E800C6DF63 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C188507151BE7E800C6DF63 /* overlay.png */; };
 		4C18850A151BF14100C6DF63 /* tinymap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 4C188509151BF14100C6DF63 /* tinymap.tmx */; };
+		4C18850D151BFACC00C6DF63 /* PauseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18850C151BFACC00C6DF63 /* PauseMenu.m */; };
+		4C188510151BFB0300C6DF63 /* ResultsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18850F151BFB0300C6DF63 /* ResultsMenu.m */; };
 		4C501FD7151A420200C26BF8 /* PlayerActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C501FD6151A420200C26BF8 /* PlayerActor.m */; };
 		4C5ED9A115191CF500FEAD81 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5ED9A015191CF500FEAD81 /* QuartzCore.framework */; };
 		4C5ED9A315191CF500FEAD81 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5ED9A215191CF500FEAD81 /* OpenGLES.framework */; };
@@ -179,6 +181,10 @@
 		4C188504151BCABA00C6DF63 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		4C188507151BE7E800C6DF63 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
 		4C188509151BF14100C6DF63 /* tinymap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tinymap.tmx; sourceTree = "<group>"; };
+		4C18850B151BFACB00C6DF63 /* PauseMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenu.h; sourceTree = "<group>"; };
+		4C18850C151BFACC00C6DF63 /* PauseMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenu.m; sourceTree = "<group>"; };
+		4C18850E151BFB0300C6DF63 /* ResultsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsMenu.h; sourceTree = "<group>"; };
+		4C18850F151BFB0300C6DF63 /* ResultsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsMenu.m; sourceTree = "<group>"; };
 		4C501FD5151A420200C26BF8 /* PlayerActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerActor.h; sourceTree = "<group>"; };
 		4C501FD6151A420200C26BF8 /* PlayerActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerActor.m; sourceTree = "<group>"; };
 		4C5ED99C15191CF500FEAD81 /* Ninja vs Samurai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ninja vs Samurai.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -504,6 +510,10 @@
 			children = (
 				4C1884F9151B827A00C6DF63 /* FinishedMenu.h */,
 				4C1884FA151B827A00C6DF63 /* FinishedMenu.m */,
+				4C18850B151BFACB00C6DF63 /* PauseMenu.h */,
+				4C18850C151BFACC00C6DF63 /* PauseMenu.m */,
+				4C18850E151BFB0300C6DF63 /* ResultsMenu.h */,
+				4C18850F151BFB0300C6DF63 /* ResultsMenu.m */,
 			);
 			name = Menus;
 			sourceTree = "<group>";
@@ -1198,6 +1208,8 @@
 				4C1884FB151B827A00C6DF63 /* FinishedMenu.m in Sources */,
 				4C1884FE151B8D8600C6DF63 /* Constants.m in Sources */,
 				4C188505151BCABC00C6DF63 /* Storage.m in Sources */,
+				4C18850D151BFACC00C6DF63 /* PauseMenu.m in Sources */,
+				4C188510151BFB0300C6DF63 /* ResultsMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

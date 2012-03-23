@@ -39,7 +39,7 @@
 - (id)init {
     if ((self = [super init])) {
         // Reset button
-        CCLabelTTF *resetLabel = [CCLabelTTF labelWithString:@"()" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
+        CCLabelTTF *resetLabel = [CCLabelTTF labelWithString:@"()" fontName:FONT_NAME fontSize:FONT_SIZE_SML];
         resetLabel.color = FONT_COLOR;
         CCMenuItemLabel *resetButton = [CCMenuItemLabel itemWithLabel:resetLabel block:^(id sender){
             if (self.delegate && [self.delegate respondsToSelector:@selector(resetAction)]) {
@@ -48,7 +48,7 @@
         }];
 
         // Pause button
-        CCLabelTTF *pauseLabel = [CCLabelTTF labelWithString:@"||" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
+        CCLabelTTF *pauseLabel = [CCLabelTTF labelWithString:@"||" fontName:FONT_NAME fontSize:FONT_SIZE_SML];
         pauseLabel.color = FONT_COLOR;
         CCMenuItemLabel *pauseButton = [CCMenuItemLabel itemWithLabel:pauseLabel block:^(id sender){
             if (self.delegate && [self.delegate respondsToSelector:@selector(pauseAction)]) {
@@ -58,7 +58,7 @@
 
         self.menu = [CCMenu menuWithItems:resetButton, pauseButton, nil];
         [self.menu alignItemsVertically];
-        self.menu.position = ccp(FONT_SIZE_MED, self.contentSize.height - (FONT_SIZE_MED * 2));
+        self.menu.position = ccp(FONT_SIZE_SML, self.contentSize.height - (FONT_SIZE_SML * 2));
         [self addChild:self.menu];
 
         // Moves label

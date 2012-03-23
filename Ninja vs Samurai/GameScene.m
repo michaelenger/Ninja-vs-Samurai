@@ -12,6 +12,7 @@
 #import "FinishedMenu.h"
 #import "GameMap.h"
 #import "MapLayer.h"
+#import "PauseMenu.h"
 #import "Storage.h"
 #import "UILayer.h"
 
@@ -152,7 +153,7 @@
     [self hide];
 }
 
-#pragma mark FinishedMenuDelegate
+#pragma mark FinishedMenuDelegate/PauseMenuDelegate
 
 - (void)nextAction {
     NSString *level = @"testmap.tmx";
@@ -172,10 +173,21 @@
     [self resetAction];
 }
 
+- (void)resumeAction {
+    self.actor.pause = NO;
+    [self show];
+}
+
 #pragma mark UILayerDelegate
 
 - (void)pauseAction {
-    // @todo
+    // Pause game
+    self.actor.pause = YES;
+    [self hide];
+
+    // Show pause menu
+    PauseMenu *menu = [PauseMenu menuWithDelegate:self completed:NO moves:NO scrolls:NO]; // @todo: proper star settings
+    [self addChild:menu];
 }
 
 - (void)resetAction {

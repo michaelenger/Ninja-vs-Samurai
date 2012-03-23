@@ -9,10 +9,11 @@
 #import "cocos2d.h"
 #import "ActorLayer.h"
 #import "FinishedMenu.h"
+#import "PauseMenu.h"
 #import "UILayer.h"
 
 @class ActorLayer, BackgroundLayer, MapLayer, UILayer;
-@interface GameScene : CCScene <ActorLayerDelegate, FinishedMenuDelegate, UILayerDelegate>
+@interface GameScene : CCScene <ActorLayerDelegate, FinishedMenuDelegate, PauseMenuDelegate, UILayerDelegate>
 
 @property (strong) ActorLayer *actor;
 @property (strong) BackgroundLayer *background;

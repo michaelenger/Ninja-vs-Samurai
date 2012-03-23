@@ -1,30 +1,34 @@
 //
-//  FinishedMenu.m
+//  PauseMenu.m
 //  Ninja vs Samurai
 //
-//  Created by Michael Enger on 3/22/12.
+//  Created by Michael Enger on 3/23/12.
 //  Copyright (c) 2012 The Lonely Coder. All rights reserved.
 //
 
-#import "FinishedMenu.h"
+#import "PauseMenu.h"
 #import "Constants.h"
 
-@implementation FinishedMenu
+@implementation PauseMenu
 @synthesize delegate = _delegate;
 
 #pragma mark Class Methods
 
-+ (FinishedMenu *)menuWithDelegate:(id<FinishedMenuDelegate>)delegate {
-    return [[[self alloc] initWithDelegate:delegate] autorelease];
++ (PauseMenu *)menuWithDelegate:(id<PauseMenuDelegate>)delegate {
+    return [self menuWithDelegate:delegate completed:NO moves:NO scrolls:NO];
+}
+
++ (PauseMenu *)menuWithDelegate:(id<PauseMenuDelegate>)delegate completed:(BOOL)completed moves:(BOOL)moves scrolls:(BOOL)scrolls {
+    return [[[self alloc] initWithDelegate:delegate completed:completed moves:moves scrolls:scrolls] autorelease];
 }
 
 #pragma mark Initialize
 
-- (id)initWithDelegate:(id<FinishedMenuDelegate>)delegate {
-    if ((self = [self initWithTitle:@"Success"])) {
+- (id)initWithDelegate:(id<PauseMenuDelegate>)delegate completed:(BOOL)completed moves:(BOOL)moves scrolls:(BOOL)scrolls {
+    if ((self = [self initWithTitle:@"Paused" completed:completed moves:moves scrolls:scrolls])) {
         CGSize winSize = [CCDirector sharedDirector].winSize;
         self.delegate = delegate;
-
+        
         // Quit Button
         CCLabelTTF *quitLabel = [CCLabelTTF labelWithString:@"Quit" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
         quitLabel.color = FONT_COLOR;
@@ -35,12 +39,12 @@
             }
         }];
         
-        // Retry Button
-        CCLabelTTF *replayLabel = [CCLabelTTF labelWithString:@"Retry" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        replayLabel.color = FONT_COLOR;
-        CCMenuItem *replay = [CCMenuItemLabel itemWithLabel:replayLabel block:^(id selector){
-            if (self.delegate && [self.delegate respondsToSelector:@selector(retryAction)]) {
-                [self.delegate retryAction];
+        // Resume Button
+        CCLabelTTF *resumeLabel = [CCLabelTTF labelWithString:@"Resume" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
+        resumeLabel.color = FONT_COLOR;
+        CCMenuItem *resume = [CCMenuItemLabel itemWithLabel:resumeLabel block:^(id selector){
+            if (self.delegate && [self.delegate respondsToSelector:@selector(resumeAction)]) {
+                [self.delegate resumeAction];
                 [self removeFromParentAndCleanup:YES];
             }
         }];
@@ -55,7 +59,7 @@
             }
         }];
         
-        self.menu = [CCMenu menuWithItems:quit,replay,next,nil];
+        self.menu = [CCMenu menuWithItems:quit,resume,next,nil];
         self.menu.position = ccp(winSize.width / 2, winSize.height * 0.15);
         [self.menu alignItemsHorizontallyWithPadding:FONT_SIZE_MED];
         [self addChild:self.menu];
