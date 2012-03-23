@@ -44,17 +44,11 @@
         // Background
         [self addChild:[BackgroundLayer layer]];
 
-        // Title
-        CCLabelTTF *title = [CCLabelTTF labelWithString:@"Ninja vs Samurai" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        title.color = FONT_COLOR;
-        title.position = ccp(self.contentSize.width / 2, self.contentSize.height - FONT_SIZE_MED);
-        [self addChild:title];
-
         // Main menu
         self.mainMenu = [MainMenu menuWithDelegate:self];
         self.mainMenu.position = ccp(0, 0);
         [self addChild:self.mainMenu];
-        
+
         // Audio
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"startgame.mp3"];
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"music-menu.mp3" loop:YES];
