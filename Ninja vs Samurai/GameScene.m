@@ -11,6 +11,7 @@
 #import "BackgroundLayer.h"
 #import "FinishedMenu.h"
 #import "GameMap.h"
+#import "MainScene.h"
 #import "MapLayer.h"
 #import "PauseMenu.h"
 #import "Storage.h"
@@ -154,8 +155,7 @@
 }
 
 - (void)quitAction {
-    // @todo
-    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:self.level]];
+    [[CCDirector sharedDirector] replaceScene: [MainScene scene]];
 }
 
 - (void)retryAction {

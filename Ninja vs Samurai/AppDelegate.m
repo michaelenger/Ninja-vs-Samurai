@@ -9,7 +9,7 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "GameScene.h"
+#import "MainScene.h"
 
 @implementation AppController
 
@@ -83,7 +83,7 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"spritesheet.plist"];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [GameScene sceneWithLevel:@"testmap.tmx"]];
+	[director_ pushScene: [MainScene scene]];
 
 	return YES;
 }
