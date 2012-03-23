@@ -88,6 +88,8 @@ NSMutableArray *_moves;
             [self.scrolls removeObject:scroll];
             [self removeChild:scroll cleanup:YES];
             self.playerScrolls++;
+            if ([self.delegate respondsToSelector:@selector(scrollPickup)])
+                [self.delegate scrollPickup];
         }
     }
 

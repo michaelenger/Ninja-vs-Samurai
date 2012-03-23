@@ -10,6 +10,7 @@
 #import "BackgroundLayer.h"
 #import "Constants.h"
 #import "GameScene.h"
+#import "SimpleAudioEngine.h"
 
 @implementation MainScene
 @synthesize mainMenu = _mainMenu;
@@ -24,6 +25,7 @@
 
 - (void)creditsAction {
     // @todo
+    [[SimpleAudioEngine sharedEngine] playEffect:@"startgame.mp3"];
 }
 
 - (void)playAction {
@@ -52,6 +54,10 @@
         self.mainMenu = [MainMenu menuWithDelegate:self];
         self.mainMenu.position = ccp(0, 0);
         [self addChild:self.mainMenu];
+        
+        // Audio
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"startgame.mp3"];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"music-menu.mp3" loop:YES];
     }
     return self;
 }

@@ -51,5 +51,7 @@
 - (void)finished;
 // Called for every player turn
 - (void)nextTurn;
+// Called when the player picks up a scroll
+- (void)scrollPickup;
 
 @end

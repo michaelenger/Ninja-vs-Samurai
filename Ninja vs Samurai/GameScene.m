@@ -14,6 +14,7 @@
 #import "MainScene.h"
 #import "MapLayer.h"
 #import "PauseMenu.h"
+#import "SimpleAudioEngine.h"
 #import "Storage.h"
 #import "UILayer.h"
 
@@ -36,7 +37,7 @@
 - (id)initWithLevel:(NSString *)level {
     if ((self = [self init])) {
         self.level = level;
-        GameMap *map = [[GameMap tiledMapWithTMXFile:level] retain];
+        GameMap *map = [GameMap tiledMapWithTMXFile:level];
         
         // Background
         self.background = [BackgroundLayer layer];
@@ -55,9 +56,15 @@
         self.ui = [UILayer layer];
         self.ui.delegate = self;
         [self addChild:self.ui];
-        
-        [map release];
-        
+
+        // Play music
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"music-game.mp3" loop:YES];
+
+        // Preload audio effects
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"attack.mp3"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"kungfu.mp3"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"scroll.mp3"];
+
         // Player score
         NSDictionary *score = [NSDictionary dictionaryWithObjectsAndKeys:
                                [NSNumber numberWithBool:NO], @"completed",
@@ -94,6 +101,9 @@
     // Flash damange indicator
     [self.ui flashDamage];
 
+    // Play sound effect
+    [[SimpleAudioEngine sharedEngine] playEffect:@"attack.mp3"];
+
     // Reset moves count
     self.ui.moves = 0;
     [self.ui update];
@@ -103,6 +113,9 @@
 }
 
 - (void)finished {
+    // Play sound effect
+    [[SimpleAudioEngine sharedEngine] playEffect:@"kungfu.mp3"];
+
     // Get score
     BOOL completed = [((NSNumber *)[self.playerScore objectForKey:@"completed"]) boolValue];
     BOOL moves = [((NSNumber *)[self.playerScore objectForKey:@"moves"]) boolValue];
@@ -142,6 +155,11 @@
 
     // Save score
     [Storage set:[NSDictionary dictionaryWithDictionary:self.playerScore] forKey:self.level];
+}
+
+- (void)scrollPickup {
+    // Play sound effect
+    [[SimpleAudioEngine sharedEngine] playEffect:@"scroll.mp3"];
 }
 
 #pragma mark FinishedMenuDelegate/PauseMenuDelegate
