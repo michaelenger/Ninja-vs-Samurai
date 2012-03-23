@@ -10,8 +10,10 @@
 #import "Constants.h"
 
 @implementation MainMenu
-@synthesize delegate = _delegate,
-            menu = _menu;
+@synthesize animationDelay = _animationDelay,
+            delegate = _delegate,
+            menu = _menu,
+            ninja = _ninja;
 
 #pragma mark Class Methods
 
@@ -28,6 +30,34 @@
     return self;
 }
 
+#pragma mark Instance Methods
+
+- (void)update:(ccTime)dt {
+    if (!self.visible || self.animationDelay < 0) return;
+
+    self.animationDelay -= dt;
+    if (self.animationDelay < 0) {
+        float x = (self.ninja.position.y < 0
+                   ? self.ninja.contentSize.width + (rand() % (int)(self.contentSize.width - (self.ninja.contentSize.width * 2)))
+                   : self.ninja.position.x);
+        float y = (self.ninja.position.y < 0 ? self.ninja.contentSize.height * 0.2 : -self.ninja.contentSize.height);
+        if (x != self.ninja.position.x) {
+            if (x > self.contentSize.width / 2) {
+                self.ninja.flipX = YES;
+            } else {
+                self.ninja.flipX = NO;
+            }
+            self.ninja.position = ccp(x, self.ninja.position.y);
+        }
+        [self.ninja runAction:[CCSequence actions:
+                               [CCMoveTo actionWithDuration:0.5 position:ccp(x, y)],
+                               [CCCallBlock actionWithBlock:^{
+            self.animationDelay = 2 + ((rand() % 20) / 10);
+        }],
+                               nil]];
+    }
+}
+
 #pragma mark NSObject
 
 - (id)init {
@@ -41,9 +71,9 @@
         [self addChild:title];
         
         // Ninja
-        CCSprite *ninja = [CCSprite spriteWithSpriteFrameName:@"player.png"];
-        ninja.position = ccp(ninja.contentSize.width * 2.5, ninja.contentSize.height * 0.2);
-        [self addChild:ninja];
+        self.ninja = [CCSprite spriteWithSpriteFrameName:@"player.png"];
+        self.ninja.position = ccp(self.ninja.contentSize.width * 2.5, -self.ninja.contentSize.height);
+        [self addChild:self.ninja];
 
         // Play Button
         CCLabelBMFont *playLabel = [CCLabelBMFont labelWithString:@"Play Game" fntFile:FONT_MEDIUM];
@@ -74,6 +104,11 @@
         
         self.menu = [CCMenu menuWithItems:playButton, settingsButton, creditsButton, nil];
         [self addChild:self.menu];
+
+        // Handle the update
+        [self schedule:@selector(update:)];
+        srand(time(NULL));
+        self.animationDelay = 2;
     }
     return self;
 }
@@ -81,6 +116,7 @@
 - (void)dealloc {
     self.delegate = nil;
     self.menu = nil;
+    self.ninja = nil;
     [super dealloc];
 }
 

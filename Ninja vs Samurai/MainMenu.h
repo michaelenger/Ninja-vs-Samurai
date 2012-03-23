@@ -11,8 +11,10 @@
 @protocol MainMenuDelegate;
 @interface MainMenu : CCNode
 
+@property (assign) float animationDelay;
 @property (strong) id<MainMenuDelegate> delegate;
 @property (strong) CCMenu *menu;
+@property (strong) CCSprite *ninja;
 
 // Constructor
 + (MainMenu *)menuWithDelegate:(id<MainMenuDelegate>)delegate;
