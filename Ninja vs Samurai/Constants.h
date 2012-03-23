@@ -18,3 +18,8 @@ extern NSString * const FONT_LARGE;
 extern NSString * const FONT_SMALL;
 extern ccColor3B const FONT_COLOR;
 extern ccColor3B const FONT_COLOR_LIGHT;
+
+// Level count
+extern unsigned int const LEVEL_GROUPS;
+extern unsigned int const LEVEL_ROWS;
+extern unsigned int const LEVEL_COLUMNS;

@@ -16,6 +16,7 @@
 @implementation MainScene
 @synthesize creditsMenu = _creditsMenu,
             mainMenu = _mainMenu,
+            playMenu = _playMenu,
             settingsMenu = _settingsMenu;
 
 #pragma mark Class Methods
@@ -24,12 +25,21 @@
     return [self node];
 }
 
-#pragma mark CreditsMenuDelegate/SettingsMenuDelegate
+#pragma mark CreditsMenuDelegate/PlayMenuDelegate/SettingsMenuDelegate
 
 - (void)backAction {
     self.creditsMenu.visible = NO;
+    self.playMenu.visible = NO;
     self.settingsMenu.visible = NO;
     self.mainMenu.visible = YES;
+}
+
+#pragma mark PlayMenuDelegate
+
+- (void)playLevel:(NSString *)level {
+    // @todo
+    NSLog(@"PLAY LEVEL: %@", level);
+    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:@"testmap.tmx"]];
 }
 
 #pragma mark MainMenuDelegate
@@ -43,8 +53,8 @@
 }
 
 - (void)playAction {
-    // @todo: show a level chooser
-    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:@"testmap.tmx"]];
+    self.playMenu.visible = YES;
+    self.mainMenu.visible = NO;
 }
 
 - (void)settingsAction {
@@ -62,6 +72,11 @@
         // Main menu
         self.mainMenu = [MainMenu menuWithDelegate:self];
         [self addChild:self.mainMenu];
+
+        // Play menu
+        self.playMenu = [PlayMenu menuWithDelegate:self];
+        self.playMenu.visible = NO;
+        [self addChild:self.playMenu];
 
         // Settings menu
         self.settingsMenu = [SettingsMenu menuWithDelegate:self];
@@ -86,6 +101,7 @@
 - (void)dealloc {
     self.creditsMenu = nil;
     self.mainMenu = nil;
+    self.playMenu = nil;
     self.settingsMenu = nil;
     [super dealloc];
 }
