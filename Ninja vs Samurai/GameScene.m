@@ -50,6 +50,7 @@
         
         // UI
         self.ui = [UILayer layer];
+        self.ui.delegate = self;
         [self addChild:self.ui];
         
         [map release];
@@ -71,7 +72,7 @@
     [self addChild:self.ui];
 }
 
-#pragma mark ActorDelegate
+#pragma mark ActorLayerDelegate
 
 - (void)nextTurn {
     self.ui.moves++;
@@ -168,7 +169,16 @@
 
 - (void)retryAction {
     [self show];
+    [self resetAction];
+}
 
+#pragma mark UILayerDelegate
+
+- (void)pauseAction {
+    // @todo
+}
+
+- (void)resetAction {
     // Reset moves count
     self.ui.moves = 0;
     [self.ui update];

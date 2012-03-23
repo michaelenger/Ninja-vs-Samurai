@@ -11,6 +11,8 @@
 
 @implementation UILayer
 @synthesize damageIndicator = _damageIndicator,
+            delegate = _delegate,
+            menu = _menu,
             moves = _moves,
             movesLabel = _movesLabel;
 
@@ -36,6 +38,29 @@
 
 - (id)init {
     if ((self = [super init])) {
+        // Reset button
+        CCLabelTTF *resetLabel = [CCLabelTTF labelWithString:@"()" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
+        resetLabel.color = FONT_COLOR;
+        CCMenuItemLabel *resetButton = [CCMenuItemLabel itemWithLabel:resetLabel block:^(id sender){
+            if (self.delegate && [self.delegate respondsToSelector:@selector(resetAction)]) {
+                [self.delegate resetAction];
+            }
+        }];
+
+        // Pause button
+        CCLabelTTF *pauseLabel = [CCLabelTTF labelWithString:@"||" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
+        pauseLabel.color = FONT_COLOR;
+        CCMenuItemLabel *pauseButton = [CCMenuItemLabel itemWithLabel:pauseLabel block:^(id sender){
+            if (self.delegate && [self.delegate respondsToSelector:@selector(pauseAction)]) {
+                [self.delegate pauseAction];
+            }
+        }];
+
+        self.menu = [CCMenu menuWithItems:resetButton, pauseButton, nil];
+        [self.menu alignItemsVertically];
+        self.menu.position = ccp(FONT_SIZE_MED, self.contentSize.height - (FONT_SIZE_MED * 2));
+        [self addChild:self.menu];
+
         // Moves label
         self.moves = 0;
         self.movesLabel = [CCLabelTTF labelWithString:@""
@@ -62,6 +87,8 @@
 
 - (void)dealloc {
     self.damageIndicator = nil;
+    self.delegate = nil;
+    self.menu = nil;
     self.movesLabel = nil;
     [super dealloc];
 }

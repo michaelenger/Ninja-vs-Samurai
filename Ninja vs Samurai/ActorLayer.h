@@ -9,10 +9,10 @@
 #import "cocos2d.h"
 
 @class GameMap, PlayerActor, ExitActor;
-@protocol ActorDelegate;
+@protocol ActorLayerDelegate;
 @interface ActorLayer : CCLayer
 
-@property (strong) id<ActorDelegate> delegate;
+@property (strong) id<ActorLayerDelegate> delegate;
 @property (strong) GameMap *map;
 @property (strong) PlayerActor *player;
 @property (strong) ExitActor *exit;
@@ -42,7 +42,7 @@
 
 @end
 
-@protocol ActorDelegate <NSObject>
+@protocol ActorLayerDelegate <NSObject>
 
 @optional
 // Called when the player has failed the level

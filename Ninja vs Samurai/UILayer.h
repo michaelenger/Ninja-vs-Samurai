@@ -8,9 +8,12 @@
 
 #import "cocos2d.h"
 
+@protocol UILayerDelegate;
 @interface UILayer : CCLayer
 
 @property (strong) CCSprite *damageIndicator;
+@property (strong) id<UILayerDelegate> delegate;
+@property (strong) CCMenu *menu;
 @property (assign) unsigned int moves;
 @property (strong) CCLabelTTF *movesLabel;
 
@@ -22,5 +25,16 @@
 
 // Update the UI elements
 - (void)update;
+
+@end
+
+@protocol UILayerDelegate <NSObject>
+
+@optional
+// Show the pause menu
+- (void)pauseAction;
+
+// Reset the current level
+- (void)resetAction;
 
 @end
