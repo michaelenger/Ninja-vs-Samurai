@@ -20,6 +20,7 @@
 @property (strong) MapLayer *map;
 @property (strong) UILayer *ui;
 @property (strong) NSString *level;
+@property (strong) NSMutableDictionary *playerScore;
 
 // Constructor
 + (GameScene *)sceneWithLevel:(NSString *)level;

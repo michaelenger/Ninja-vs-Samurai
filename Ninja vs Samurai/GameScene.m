@@ -21,7 +21,8 @@
             background = _background,
             map = _map,
             ui = _ui,
-            level = _level;
+            level = _level,
+            playerScore = _playerScore;
 
 #pragma mark Class Methods
 
@@ -55,6 +56,14 @@
         [self addChild:self.ui];
         
         [map release];
+        
+        // Player score
+        NSDictionary *score = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithBool:NO], @"completed",
+                               [NSNumber numberWithBool:NO], @"moves",
+                               [NSNumber numberWithBool:NO], @"scrolls",
+                               nil];
+        self.playerScore = [NSMutableDictionary dictionaryWithDictionary:[Storage get:self.level withDefault:score]];
     }
     return self;
 }
@@ -94,63 +103,44 @@
 
 - (void)finished {
     // Get score
-    NSMutableDictionary *score = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                    [NSNumber numberWithInt:1], @"completed",
-                                    [NSNumber numberWithInt:self.ui.moves], @"moves",
-                                    [NSNumber numberWithInt:self.actor.playerScrolls], @"scrolls",
-                                    [NSNumber numberWithInt:0], @"100%",nil];
-    NSMutableDictionary *savedScore = [Storage get:self.level];
-    BOOL complete = YES;
+    BOOL completed = [((NSNumber *)[self.playerScore objectForKey:@"completed"]) boolValue];
+    BOOL moves = [((NSNumber *)[self.playerScore objectForKey:@"moves"]) boolValue];
+    BOOL scrolls = [((NSNumber *)[self.playerScore objectForKey:@"scrolls"]) boolValue];
 
     // Show finished menu
-    FinishedMenu *finish = [FinishedMenu menuWithDelegate:self];
+    FinishedMenu *finish = [FinishedMenu menuWithDelegate:self completed:completed moves:moves scrolls:scrolls];
     [self addChild:finish];
-    
-    // Completed star
-    if (savedScore && [((NSNumber *)[savedScore objectForKey:@"completed"]) intValue] == 1) {
-        [finish toggleCompletedStarAnimated:NO];
-    } else {
-        [finish toggleCompletedStarAnimated:YES];
-    }
-    
-    // Moves star
-    unsigned int moves = self.actor.map.moves;
-    if (savedScore && [((NSNumber *)[savedScore objectForKey:@"moves"]) intValue] <= moves) {
-        [finish toggleMovesStarAnimated:NO];
-    } else if ([((NSNumber *)[score objectForKey:@"moves"]) intValue] <= moves) {
-        [finish toggleMovesStarAnimated:YES];
-    } else {
-        complete = NO;
-    }
-    
-    // Scrolls star
-    unsigned int scrolls = self.actor.map.scrolls;
-    if (savedScore && [((NSNumber *)[savedScore objectForKey:@"scrolls"]) intValue] == scrolls) {
-        [finish toggleScrollsStarAnimated:NO];
-    } else if ([((NSNumber *)[score objectForKey:@"scrolls"]) intValue] == scrolls) {
-        [finish toggleScrollsStarAnimated:YES];
-    } else {
-        complete = NO;
-    }
-
-    // Save score
-    if (savedScore) {
-        // Moves
-        if ([((NSNumber *)[savedScore objectForKey:@"moves"]) intValue] < [((NSNumber *)[score objectForKey:@"moves"]) intValue]) {
-            [score setObject:[savedScore objectForKey:@"moves"] forKey:@"moves"];
-        }
-        // Scrolls
-        if ([((NSNumber *)[savedScore objectForKey:@"scrolls"]) intValue] > [((NSNumber *)[score objectForKey:@"scrolls"]) intValue]) {
-            [score setObject:[savedScore objectForKey:@"scrolls"] forKey:@"scrolls"];
-        }
-    }
-    if (complete) {
-        [score setObject:[NSNumber numberWithInt:1] forKey:@"100%"];
-    }
-    [Storage set:score forKey:self.level];
 
     // Hide others
     [self hide];
+
+    // Completed
+    if (!completed) {
+        completed = YES;
+        [finish toggleCompletedStarAnimated:YES];
+        [self.playerScore setObject:[NSNumber numberWithBool:completed] forKey:@"completed"];
+    }
+
+    // Moves
+    if (!moves) {
+        moves = (self.ui.moves <= self.actor.map.moves);
+        if (moves) {
+            [finish toggleMovesStarAnimated:YES];
+            [self.playerScore setObject:[NSNumber numberWithBool:moves] forKey:@"moves"];
+        }
+    }
+
+    // Scrolls
+    if (!scrolls) {
+        scrolls = (self.actor.playerScrolls == self.actor.map.scrolls);
+        if (scrolls) {
+            [finish toggleScrollsStarAnimated:YES];
+            [self.playerScore setObject:[NSNumber numberWithBool:scrolls] forKey:@"scrolls"];
+        }
+    }
+
+    // Save score
+    [Storage set:[NSDictionary dictionaryWithDictionary:self.playerScore] forKey:self.level];
 }
 
 #pragma mark FinishedMenuDelegate/PauseMenuDelegate
@@ -186,7 +176,10 @@
     [self hide];
 
     // Show pause menu
-    PauseMenu *menu = [PauseMenu menuWithDelegate:self completed:NO moves:NO scrolls:NO]; // @todo: proper star settings
+    BOOL completed = [((NSNumber *)[self.playerScore objectForKey:@"completed"]) boolValue];
+    BOOL moves = [((NSNumber *)[self.playerScore objectForKey:@"moves"]) boolValue];
+    BOOL scrolls = [((NSNumber *)[self.playerScore objectForKey:@"scrolls"]) boolValue];
+    PauseMenu *menu = [PauseMenu menuWithDelegate:self completed:completed moves:moves scrolls:scrolls];
     [self addChild:menu];
 }
 
@@ -207,6 +200,7 @@
     self.map = nil;
     self.ui = nil;
     self.level = nil;
+    self.playerScore = nil;
     [super dealloc];
 }
 

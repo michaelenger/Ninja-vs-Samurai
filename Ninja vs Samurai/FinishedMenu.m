@@ -15,13 +15,17 @@
 #pragma mark Class Methods
 
 + (FinishedMenu *)menuWithDelegate:(id<FinishedMenuDelegate>)delegate {
-    return [[[self alloc] initWithDelegate:delegate] autorelease];
+    return [self menuWithDelegate:delegate completed:NO moves:NO scrolls:NO];
+}
+
++ (FinishedMenu *)menuWithDelegate:(id<FinishedMenuDelegate>)delegate completed:(BOOL)completed moves:(BOOL)moves scrolls:(BOOL)scrolls {
+    return [[[self alloc] initWithDelegate:delegate completed:completed moves:moves scrolls:scrolls] autorelease];
 }
 
 #pragma mark Initialize
 
-- (id)initWithDelegate:(id<FinishedMenuDelegate>)delegate {
-    if ((self = [self initWithTitle:@"Success"])) {
+- (id)initWithDelegate:(id<FinishedMenuDelegate>)delegate completed:(BOOL)completed moves:(BOOL)moves scrolls:(BOOL)scrolls {
+    if ((self = [self initWithTitle:@"Success" completed:completed moves:moves scrolls:scrolls])) {
         CGSize winSize = [CCDirector sharedDirector].winSize;
         self.delegate = delegate;
 

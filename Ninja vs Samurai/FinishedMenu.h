@@ -15,9 +15,10 @@
 
 // Constructor
 + (FinishedMenu *)menuWithDelegate:(id<FinishedMenuDelegate>)delegate;
++ (FinishedMenu *)menuWithDelegate:(id<FinishedMenuDelegate>)delegate completed:(BOOL)completed moves:(BOOL)moves scrolls:(BOOL)scrolls;
 
 // Initialize
-- (id)initWithDelegate:(id<FinishedMenuDelegate>)delegate;
+- (id)initWithDelegate:(id<FinishedMenuDelegate>)delegate completed:(BOOL)completed moves:(BOOL)moves scrolls:(BOOL)scrolls;
 
 @end
 
