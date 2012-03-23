@@ -17,7 +17,7 @@
 - (void)previousMenu;
 
 // Update the menu
-- (void)update;
+- (void)updateButtons;
 
 @end
 
@@ -47,26 +47,53 @@
 #pragma mark Instance Methods
 
 - (void)nextMenu {
-    // @todo
+    float duration = 0.3;
+    LevelMenu *current = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu];
+    LevelMenu *next = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu + 1];
+
+    [current runAction:[CCSequence actions:
+                        [CCEaseInOut actionWithAction:[CCMoveTo
+                                                       actionWithDuration:duration
+                                                       position:ccp(-current.contentSize.width / 2,current.position.y)] rate:2],
+                        [CCCallBlock actionWithBlock:^{ current.visible = NO; }],
+                        nil]];
+    [next runAction:[CCSequence actions:
+                        [CCCallBlock actionWithBlock:^{ next.visible = YES; }],
+                        [CCEaseInOut actionWithAction:[CCMoveTo
+                                                       actionWithDuration:duration
+                                                       position:ccp(self.contentSize.width / 2,next.position.y)] rate:2],
+                        nil]];
+
     self.currentMenu++;
-    [self update];
+    [self updateButtons];
 }
 
 - (void)previousMenu {
-    // @todo
+    float duration = 0.3;
+    LevelMenu *current = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu];
+    LevelMenu *previous = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu - 1];
+
+    [current runAction:[CCSequence actions:
+                        [CCEaseInOut actionWithAction:[CCMoveTo
+                                                       actionWithDuration:duration
+                                                       position:ccp(self.contentSize.width + (current.contentSize.width / 2),current.position.y)] rate:2],
+                        [CCCallBlock actionWithBlock:^{ current.visible = NO; }],
+                        nil]];
+    [previous runAction:[CCSequence actions:
+                     [CCCallBlock actionWithBlock:^{ previous.visible = YES; }],
+                     [CCEaseInOut actionWithAction:[CCMoveTo
+                                                    actionWithDuration:duration
+                                                    position:ccp(self.contentSize.width / 2,previous.position.y)] rate:2],
+                     nil]];
+
     self.currentMenu--;
-    [self update];
+    [self updateButtons];
 }
 
-- (void)update {
+- (void)updateButtons {
     // Show/hide buttons
     self.previousButton.visible = (self.currentMenu != 0);
     self.nextButton.visible = (self.currentMenu < LEVEL_GROUPS - 1);
-
-    // Show the current menu
-    for (int i = 0; i < LEVEL_GROUPS; i++) {
-        ((LevelMenu *)[self.levelMenus objectAtIndex:i]).visible = (i == self.currentMenu);
-    }
 }
 
 #pragma mark LevelMenuDelegate
@@ -110,23 +137,29 @@
             }
         }];
         backButton.position = ccp(self.contentSize.width / 2, backButton.contentSize.height * 0.75);
-        
+
         self.menu = [CCMenu menuWithItems:self.previousButton, self.nextButton, backButton, nil];
         self.menu.position = ccp(0,0);
-        [self addChild:self.menu];
-        
+
         // Level menus
         NSMutableArray *menus = [NSMutableArray arrayWithCapacity:LEVEL_GROUPS];
         for (int i = 0; i < LEVEL_GROUPS; i++) {
             LevelMenu *menu = [LevelMenu menuWithDelegate:self group:i+1];
             [menus addObject:menu];
+            menu.position = ccp(self.contentSize.width + (menu.contentSize.width / 2),
+                                self.contentSize.height / 2 + (backButton.contentSize.height / 2));
             menu.visible = NO;
-            menu.position = ccp(self.contentSize.width / 2, self.contentSize.height / 2 + (backButton.contentSize.height / 2));
             [self addChild:menu];
         }
         self.levelMenus = menus;
 
-        [self update];
+        // Reposition the first menu
+        LevelMenu *menu = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu];
+        menu.position = ccp(self.contentSize.width / 2, menu.position.y);
+        menu.visible = YES;
+
+        [self addChild:self.menu];
+        [self updateButtons];
     }
     return self;
 }
