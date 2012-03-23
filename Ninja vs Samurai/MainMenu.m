@@ -36,49 +36,41 @@
         unsigned int padding = FONT_SIZE_MED * 1.5;
         
         // Title
-        CCLabelTTF *title = [CCLabelTTF labelWithString:@"Ninja vs Samurai" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        title.color = FONT_COLOR;
-        title.position = ccp(self.contentSize.width / 2, self.contentSize.height - FONT_SIZE_MED);
+        CCSprite *title = [CCSprite spriteWithFile:@"title.png"];
+        title.position = ccp(self.contentSize.width / 2, self.contentSize.height - (title.contentSize.height));
         [self addChild:title];
+        
+        // Ninja
+        CCSprite *ninja = [CCSprite spriteWithSpriteFrameName:@"player.png"];
+        ninja.position = ccp(ninja.contentSize.width * 2.5, ninja.contentSize.height * 0.2);
+        [self addChild:ninja];
 
         // Play Button
-        CCLabelTTF *playLabel = [CCLabelTTF labelWithString:@"Play Game"
-                                                 dimensions:CGSizeMake(self.contentSize.width - (padding * 2), FONT_SIZE_MED * 1.2)
-                                                  alignment:UITextAlignmentRight
-                                                   fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        playLabel.color = FONT_COLOR;
+        CCLabelBMFont *playLabel = [CCLabelBMFont labelWithString:@"Play Game" fntFile:FONT_MEDIUM];
         CCMenuItem *playButton = [CCMenuItemLabel itemWithLabel:playLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(playAction)]) {
                 [self.delegate playAction];
             }
         }];
-        playButton.position = ccp(0, padding * 0.5);
+        playButton.position = ccp(self.contentSize.width / 2 - playLabel.contentSize.width / 2 - padding, padding * 0.5);
         
         // Settings Button
-        CCLabelTTF *settingsLabel = [CCLabelTTF labelWithString:@"Settings"
-                                                     dimensions:CGSizeMake(self.contentSize.width - (padding * 2), FONT_SIZE_MED * 1.2)
-                                                      alignment:UITextAlignmentRight
-                                                       fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        settingsLabel.color = FONT_COLOR;
+        CCLabelBMFont *settingsLabel = [CCLabelBMFont labelWithString:@"Settings" fntFile:FONT_MEDIUM];
         CCMenuItem *settingsButton = [CCMenuItemLabel itemWithLabel:settingsLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(settingsAction)]) {
                 [self.delegate settingsAction];
             }
         }];
-        settingsButton.position = ccp(playButton.position.x, playButton.position.y - padding);
+        settingsButton.position = ccp(self.contentSize.width / 2 - settingsLabel.contentSize.width / 2 - padding, playButton.position.y - padding);
         
         // Credits Button
-        CCLabelTTF *creditsLabel = [CCLabelTTF labelWithString:@"Credits"
-                                                    dimensions:CGSizeMake(self.contentSize.width - (padding * 2), FONT_SIZE_MED * 1.2)
-                                                     alignment:UITextAlignmentRight
-                                                      fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        creditsLabel.color = FONT_COLOR;
+        CCLabelBMFont *creditsLabel = [CCLabelBMFont labelWithString:@"Credits" fntFile:FONT_MEDIUM];
         CCMenuItem *creditsButton = [CCMenuItemLabel itemWithLabel:creditsLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(creditsAction)]) {
                 [self.delegate creditsAction];
             }
         }];
-        creditsButton.position = ccp(settingsButton.position.x, settingsButton.position.y - padding);
+        creditsButton.position = ccp(self.contentSize.width / 2 - creditsLabel.contentSize.width / 2 - padding, settingsButton.position.y - padding);
         
         self.menu = [CCMenu menuWithItems:playButton, settingsButton, creditsButton, nil];
         [self addChild:self.menu];

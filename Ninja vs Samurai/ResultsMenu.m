@@ -25,26 +25,22 @@
 
 - (id)initWithTitle:(NSString *)title {
     if ((self = [self init])) {
-        CGSize winSize = [CCDirector sharedDirector].winSize;
+        self.contentSize = [CCDirector sharedDirector].winSize;
         
         // Overlay
         CCSprite *overlay = [CCSprite spriteWithFile:@"overlay.png"];
-        overlay.position = ccp(winSize.width / 2, winSize.height / 2);
+        overlay.position = ccp(self.contentSize.width / 2, self.contentSize.height / 2);
         [self addChild:overlay];
         
         // Title
-        CCLabelTTF *titleLabel = [CCLabelTTF labelWithString:title
-                                                  dimensions:CGSizeMake(winSize.width, FONT_SIZE_BIG)
-                                                   alignment:UITextAlignmentCenter
-                                                    fontName:FONT_NAME fontSize:FONT_SIZE_BIG];
-        titleLabel.color = FONT_COLOR;
-        titleLabel.position = ccp(winSize.width / 2,winSize.height - (winSize.height * 0.1));
+        CCLabelBMFont *titleLabel = [CCLabelBMFont labelWithString:title fntFile:FONT_LARGE];
+        titleLabel.position = ccp(self.contentSize.width / 2, self.contentSize.height - (titleLabel.contentSize.height * 0.75));
         [self addChild:titleLabel];
         
         // Stars
         self.completedStar = [CCSprite spriteWithFile:@"star-empty.png"];
-        self.completedStar.position = ccp((winSize.width * 0.5) / 2,
-                                          winSize.height * 0.55);
+        self.completedStar.position = ccp((self.contentSize.width * 0.5) / 2,
+                                          self.contentSize.height * 0.55);
         [self addChild:self.completedStar];
         CCLabelTTF *completedLabel = [CCLabelTTF labelWithString:@"COMPLETED LEVEL"
                                                       dimensions:CGSizeMake(self.completedStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)
@@ -56,8 +52,8 @@
         [self addChild:completedLabel];
         
         self.movesStar = [CCSprite spriteWithFile:@"star-empty.png"];
-        self.movesStar.position = ccp(winSize.width / 2,
-                                      winSize.height * 0.55);
+        self.movesStar.position = ccp(self.contentSize.width / 2,
+                                      self.contentSize.height * 0.55);
         [self addChild:self.movesStar];
         CCLabelTTF *movesLabel = [CCLabelTTF labelWithString:@"UNDER PAR MOVES"
                                                   dimensions:CGSizeMake(self.movesStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)
@@ -70,8 +66,8 @@
         [self addChild:movesLabel];
         
         self.scrollsStar = [CCSprite spriteWithFile:@"star-empty.png"];
-        self.scrollsStar.position = ccp(winSize.width - (winSize.width * 0.5) / 2,
-                                        winSize.height * 0.55);
+        self.scrollsStar.position = ccp(self.contentSize.width - (self.contentSize.width * 0.5) / 2,
+                                        self.contentSize.height * 0.55);
         [self addChild:self.scrollsStar];
         CCLabelTTF *scrollsLabel = [CCLabelTTF labelWithString:@"GOT ALL SCROLLS"
                                                     dimensions:CGSizeMake(self.scrollsStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)

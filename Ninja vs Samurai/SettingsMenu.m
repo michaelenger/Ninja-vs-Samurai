@@ -75,15 +75,13 @@
         [self addChild:overlay];
         
         // Title
-        CCLabelTTF *titleLabel = [CCLabelTTF labelWithString:@"Settings" fontName:FONT_NAME fontSize:FONT_SIZE_BIG];
-        titleLabel.color = FONT_COLOR;
+        CCLabelBMFont *titleLabel = [CCLabelBMFont labelWithString:@"Settings" fntFile:FONT_LARGE];
         titleLabel.position = ccp(self.contentSize.width / 2, self.contentSize.height - (self.contentSize.height * 0.1));
         [self addChild:titleLabel];
         
         // Toggle music
         NSString *musicText = [NSString stringWithFormat:@"Music: %@", ([Settings instance].music ? @"YES" : @"NO"), nil];
-        CCLabelTTF *musicLabel = [CCLabelTTF labelWithString:musicText fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        musicLabel.color = FONT_COLOR;
+        CCLabelBMFont *musicLabel = [CCLabelBMFont labelWithString:musicText fntFile:FONT_MEDIUM];
         self.musicButton = [CCMenuItemLabel itemWithLabel:musicLabel block:^(id selector){
             [self toggleMusic];
         }];
@@ -91,22 +89,19 @@
         
         // Toggle effects
         NSString *effectsText = [NSString stringWithFormat:@"Effects: %@", ([Settings instance].effects ? @"YES" : @"NO"), nil];
-        CCLabelTTF *effectsLabel = [CCLabelTTF labelWithString:effectsText fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        effectsLabel.color = FONT_COLOR;
+        CCLabelBMFont *effectsLabel = [CCLabelBMFont labelWithString:effectsText fntFile:FONT_MEDIUM];
         self.effectsButton = [CCMenuItemLabel itemWithLabel:effectsLabel block:^(id selector){
             [self toggleEffects];
         }];
         self.effectsButton.position = ccp(self.contentSize.width / 2, self.contentSize.height * 0.55);
         
         // Back
-        CCLabelTTF *backLabel = [CCLabelTTF labelWithString:@"Back" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        backLabel.color = FONT_COLOR;
-        CCMenuItemLabel *backButton = [CCMenuItemLabel itemWithLabel:backLabel block:^(id selector){
+        CCMenuItemImage *backButton = [CCMenuItemImage itemWithNormalImage:@"button-back.png" selectedImage:@"button-back-selected.png" block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(backAction)]) {
                 [self.delegate backAction];
             }
         }];
-        backButton.position = ccp(self.contentSize.width / 2, FONT_SIZE_MED);
+        backButton.position = ccp(self.contentSize.width / 2, backButton.contentSize.height * 0.75);
         
         // Menu
         self.menu = [CCMenu menuWithItems:self.musicButton, self.effectsButton, backButton, nil];

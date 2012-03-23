@@ -39,18 +39,18 @@
 - (id)init {
     if ((self = [super init])) {
         // Reset button
-        CCLabelTTF *resetLabel = [CCLabelTTF labelWithString:@"()" fontName:FONT_NAME fontSize:FONT_SIZE_SML];
-        resetLabel.color = FONT_COLOR;
-        CCMenuItemLabel *resetButton = [CCMenuItemLabel itemWithLabel:resetLabel block:^(id sender){
+        CCMenuItemImage *resetButton = [CCMenuItemImage itemWithNormalImage:@"button-restart.png"
+                                                              selectedImage:@"button-restart-selected.png"
+                                                                      block:^(id sender){
             if (self.delegate && [self.delegate respondsToSelector:@selector(resetAction)]) {
                 [self.delegate resetAction];
             }
         }];
 
         // Pause button
-        CCLabelTTF *pauseLabel = [CCLabelTTF labelWithString:@"||" fontName:FONT_NAME fontSize:FONT_SIZE_SML];
-        pauseLabel.color = FONT_COLOR;
-        CCMenuItemLabel *pauseButton = [CCMenuItemLabel itemWithLabel:pauseLabel block:^(id sender){
+        CCMenuItemImage *pauseButton = [CCMenuItemImage itemWithNormalImage:@"button-pause.png"
+                                                              selectedImage:@"button-pause-selected.png"
+                                                                      block:^(id sender){
             if (self.delegate && [self.delegate respondsToSelector:@selector(pauseAction)]) {
                 [self.delegate pauseAction];
             }
@@ -58,19 +58,19 @@
 
         self.menu = [CCMenu menuWithItems:resetButton, pauseButton, nil];
         [self.menu alignItemsVertically];
-        self.menu.position = ccp(FONT_SIZE_SML, self.contentSize.height - (FONT_SIZE_SML * 2));
+        self.menu.position = ccp(resetButton.contentSize.width * 0.65, self.contentSize.height - (resetButton.contentSize.height * 1.15));
         [self addChild:self.menu];
 
         // Moves label
         self.moves = 0;
         self.movesLabel = [CCLabelTTF labelWithString:@""
-                                           dimensions:CGSizeMake(self.contentSize.width-(FONT_SIZE_BIG / 2), FONT_SIZE_BIG)
+                                           dimensions:CGSizeMake(self.contentSize.width-(FONT_SIZE_BIG / 2), FONT_SIZE_BIG * 1.5)
                                             alignment:UITextAlignmentRight
                                              fontName:FONT_NAME
                                              fontSize:FONT_SIZE_BIG];
         self.movesLabel.color = FONT_COLOR;
         self.movesLabel.position = ccp(self.contentSize.width/2,
-                                       self.contentSize.height-(FONT_SIZE_BIG / 2));
+                                       self.contentSize.height- (FONT_SIZE_BIG * 0.75));
         [self addChild:self.movesLabel];
 
         // Damage splash sprite

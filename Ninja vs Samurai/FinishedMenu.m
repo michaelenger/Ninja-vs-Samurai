@@ -26,12 +26,10 @@
 
 - (id)initWithDelegate:(id<FinishedMenuDelegate>)delegate completed:(BOOL)completed moves:(BOOL)moves scrolls:(BOOL)scrolls {
     if ((self = [self initWithTitle:@"Success" completed:completed moves:moves scrolls:scrolls])) {
-        CGSize winSize = [CCDirector sharedDirector].winSize;
         self.delegate = delegate;
 
         // Quit Button
-        CCLabelTTF *quitLabel = [CCLabelTTF labelWithString:@"Quit" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        quitLabel.color = FONT_COLOR;
+        CCLabelBMFont *quitLabel = [CCLabelBMFont labelWithString:@"Quit" fntFile:FONT_MEDIUM];
         CCMenuItem *quit = [CCMenuItemLabel itemWithLabel:quitLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(quitAction)]) {
                 [self.delegate quitAction];
@@ -40,8 +38,7 @@
         }];
         
         // Retry Button
-        CCLabelTTF *replayLabel = [CCLabelTTF labelWithString:@"Retry" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        replayLabel.color = FONT_COLOR;
+        CCLabelBMFont *replayLabel = [CCLabelBMFont labelWithString:@"Retry" fntFile:FONT_MEDIUM];
         CCMenuItem *replay = [CCMenuItemLabel itemWithLabel:replayLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(retryAction)]) {
                 [self.delegate retryAction];
@@ -50,8 +47,7 @@
         }];
         
         // Next Level Button
-        CCLabelTTF *nextLabel = [CCLabelTTF labelWithString:@"Next" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        nextLabel.color = FONT_COLOR;
+        CCLabelBMFont *nextLabel = [CCLabelBMFont labelWithString:@"Next" fntFile:FONT_MEDIUM];
         CCMenuItem *next = [CCMenuItemLabel itemWithLabel:nextLabel block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(nextAction)]) {
                 [self.delegate nextAction];
@@ -60,7 +56,7 @@
         }];
         
         self.menu = [CCMenu menuWithItems:quit,replay,next,nil];
-        self.menu.position = ccp(winSize.width / 2, winSize.height * 0.15);
+        self.menu.position = ccp(self.contentSize.width / 2, (quitLabel.contentSize.height * 1.25));
         [self.menu alignItemsHorizontallyWithPadding:FONT_SIZE_MED];
         [self addChild:self.menu];
     }

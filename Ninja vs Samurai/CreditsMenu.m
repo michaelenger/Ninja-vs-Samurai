@@ -45,8 +45,7 @@
     label.position = ccp(position.x, position.y);
     [self addChild:label];
 
-    CCLabelTTF *buttonLabel = [CCLabelTTF labelWithString:name fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-    buttonLabel.color = FONT_COLOR;
+    CCLabelBMFont *buttonLabel = [CCLabelBMFont labelWithString:name fntFile:FONT_MEDIUM];
     CCMenuItemLabel *button = [CCMenuItemLabel itemWithLabel:buttonLabel block:^(id selector){
         [[UIApplication sharedApplication] openURL:[[[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://%@",url,nil]] autorelease]];
     }];
@@ -72,8 +71,7 @@
         [self addChild:overlay];
 
         // Title
-        CCLabelTTF *titleLabel = [CCLabelTTF labelWithString:@"Credits" fontName:FONT_NAME fontSize:FONT_SIZE_BIG];
-        titleLabel.color = FONT_COLOR;
+        CCLabelBMFont *titleLabel = [CCLabelBMFont labelWithString:@"Credits" fntFile:FONT_LARGE];
         titleLabel.position = ccp(self.contentSize.width / 2, self.contentSize.height - (self.contentSize.height * 0.1));
         [self addChild:titleLabel];
 
@@ -96,14 +94,12 @@
                                                           url:@"soundcloud.com/evan-king"
                                                      position:ccp(self.contentSize.width / 2, y)];
         
-        CCLabelTTF *backLabel = [CCLabelTTF labelWithString:@"Back" fontName:FONT_NAME fontSize:FONT_SIZE_MED];
-        backLabel.color = FONT_COLOR;
-        CCMenuItemLabel *backButton = [CCMenuItemLabel itemWithLabel:backLabel block:^(id selector){
+        CCMenuItemImage *backButton = [CCMenuItemImage itemWithNormalImage:@"button-back.png" selectedImage:@"button-back-selected.png" block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(backAction)]) {
                 [self.delegate backAction];
             }
         }];
-        backButton.position = ccp(self.contentSize.width / 2, FONT_SIZE_MED);
+        backButton.position = ccp(self.contentSize.width / 2, backButton.contentSize.height * 0.75);
 
         // Menu
         self.menu = [CCMenu menuWithItems:mikeButton, jmoButton, evanButton, backButton, nil];
