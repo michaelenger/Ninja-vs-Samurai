@@ -38,7 +38,7 @@
                                                    alignment:UITextAlignmentCenter
                                                     fontName:FONT_NAME fontSize:FONT_SIZE_BIG];
         titleLabel.color = FONT_COLOR;
-        titleLabel.position = ccp(winSize.width / 2,winSize.height - (winSize.height * 0.25 / 2));
+        titleLabel.position = ccp(winSize.width / 2,winSize.height - (winSize.height * 0.1));
         [self addChild:titleLabel];
         
         // Stars

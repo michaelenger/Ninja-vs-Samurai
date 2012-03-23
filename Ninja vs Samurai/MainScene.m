@@ -13,7 +13,8 @@
 #import "SimpleAudioEngine.h"
 
 @implementation MainScene
-@synthesize mainMenu = _mainMenu;
+@synthesize creditsMenu = _creditsMenu,
+mainMenu = _mainMenu;
 
 #pragma mark Class Methods
 
@@ -21,11 +22,19 @@
     return [self node];
 }
 
+#pragma mark CreditsMenuDelegate
+
+- (void)backAction {
+    self.creditsMenu.visible = NO;
+    self.mainMenu.visible = YES;
+}
+
 #pragma mark MainMenuDelegate
 
 - (void)creditsAction {
-    // @todo
     [[SimpleAudioEngine sharedEngine] playEffect:@"startgame.mp3"];
+    self.mainMenu.visible = NO;
+    self.creditsMenu.visible = YES;
 }
 
 - (void)playAction {
@@ -46,8 +55,12 @@
 
         // Main menu
         self.mainMenu = [MainMenu menuWithDelegate:self];
-        self.mainMenu.position = ccp(0, 0);
         [self addChild:self.mainMenu];
+
+        // Credits menu
+        self.creditsMenu = [CreditsMenu menuWithDelegate:self];
+        self.creditsMenu.visible = NO;
+        [self addChild:self.creditsMenu];
 
         // Audio
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"startgame.mp3"];
@@ -57,6 +70,7 @@
 }
 
 - (void)dealloc {
+    self.creditsMenu = nil;
     self.mainMenu = nil;
     [super dealloc];
 }
