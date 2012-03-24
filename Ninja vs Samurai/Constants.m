@@ -19,5 +19,5 @@ ccColor3B const FONT_COLOR = { 137,134,117 };
 ccColor3B const FONT_COLOR_LIGHT = { 239,235,214 };
 
 unsigned int const LEVEL_GROUPS = 3;
-unsigned int const LEVEL_ROWS = 5;
-unsigned int const LEVEL_COLUMNS = 5;
+unsigned int const LEVEL_ROWS = 4;
+unsigned int const LEVEL_COLUMNS = 6;

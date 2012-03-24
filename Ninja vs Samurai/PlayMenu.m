@@ -115,6 +115,11 @@
         overlay.position = ccp(self.contentSize.width / 2, self.contentSize.height / 2);
         [self addChild:overlay];
 
+        // Title
+        CCLabelBMFont *titleLabel = [CCLabelBMFont labelWithString:@"Select Level" fntFile:FONT_LARGE];
+        titleLabel.position = ccp(self.contentSize.width / 2, self.contentSize.height - (self.contentSize.height * 0.1));
+        [self addChild:titleLabel];
+
         // Previous
         self.previousButton = [CCMenuItemImage itemWithNormalImage:@"button-previous.png"
                                                      selectedImage:@"button-previous-selected.png"
@@ -146,7 +151,7 @@
             LevelMenu *menu = [LevelMenu menuWithDelegate:self group:i+1];
             [menus addObject:menu];
             menu.position = ccp(self.contentSize.width + (menu.contentSize.width / 2),
-                                self.contentSize.height / 2 + (backButton.contentSize.height / 2));
+                                self.contentSize.height / 2);
             menu.visible = NO;
             [self addChild:menu];
         }

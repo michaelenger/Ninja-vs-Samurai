@@ -32,11 +32,23 @@
     int maxLevels = (LEVEL_ROWS * LEVEL_COLUMNS);
     float x; float y;
     for (int i = 0; i < maxLevels; i++) {
-        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"button-player.png"]
-                                                         selectedSprite:[CCSprite spriteWithFile:@"button-player-selected.png"]
-                                                                  block:^(id sender){ [menu levelSelect:i+1]; }];
+        int num = rand() % 5;
+        CCMenuItemImage *button;
+        switch (num) {
+            case 0:
+                button = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"button-player.png"]
+                                                                 selectedSprite:[CCSprite spriteWithFile:@"button-player-selected.png"]
+                                                                          block:^(id sender){ [menu levelSelect:i+1]; }];
+                break;
+            case 1:
+            default:
+                button = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"button-guard.png"]
+                                                selectedSprite:[CCSprite spriteWithFile:@"button-guard-selected.png"]
+                                                         block:^(id sender){ [menu levelSelect:i+1]; }];
+                break;
+        }
         x = -(button.contentSize.width * LEVEL_COLUMNS / 2) + ((i % LEVEL_COLUMNS) * button.contentSize.width) + (button.contentSize.width / 2);
-        y = (button.contentSize.height * LEVEL_ROWS / 2) - (ceil(i / LEVEL_ROWS) * button.contentSize.height) - (button.contentSize.height / 2);
+        y = (button.contentSize.height * LEVEL_ROWS / 2) - (ceil(i / LEVEL_COLUMNS) * button.contentSize.height) - (button.contentSize.height / 2);
         button.position = ccp(x,y);
         [menu addChild:button];
     }
