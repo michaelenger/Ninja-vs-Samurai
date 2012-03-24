@@ -165,11 +165,7 @@
 #pragma mark FinishedMenuDelegate/PauseMenuDelegate
 
 - (void)nextAction {
-    Level *level = [Level levelWithName:@"1-1"];
-    if ([self.level.name compare:level.name] == 0) {
-        level = [Level levelWithName:@"2-1"];
-    }
-    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:level]];
+    [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:[self.level nextLevel]]];
 }
 
 - (void)quitAction {

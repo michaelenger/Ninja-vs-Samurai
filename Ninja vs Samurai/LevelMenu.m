@@ -31,10 +31,9 @@
     menu.group = group;
 
     // Level buttons
-    int maxLevels = (LEVEL_ROWS * LEVEL_COLUMNS);
-    float x; float y;
-    for (int i = 0; i < maxLevels; i++) {
-        Level *level = [Level levelWithName:[NSString stringWithFormat:@"%d-%d",group,i+1,nil]];
+    float x; float y; int i = 0;
+    Level *level = [Level firstLevelForGroup:group];
+    do {
         NSString *buttonSprite;
         NSString *buttonSelectedSprite;
         if ([Scores scoresForLevel:level].completed) {
@@ -51,7 +50,10 @@
         y = (button.contentSize.height * LEVEL_ROWS / 2) - (ceil(i / LEVEL_COLUMNS) * button.contentSize.height) - (button.contentSize.height / 2);
         button.position = ccp(x,y);
         [menu addChild:button];
-    }
+
+        level = [level nextLevelForGroup:group];
+        i++;
+    } while (level);
 
     return menu;
 }
@@ -59,8 +61,7 @@
 #pragma mark Instance Methods
 
 - (BOOL)hasLevel:(Level *)level {
-    int group = [[level.name substringToIndex:[level.name rangeOfString:@"-"].length] intValue];
-    return (group == self.group);
+    return [level belongsToGroup:self.group];
 }
 
 - (void)levelSelect:(Level *)level {

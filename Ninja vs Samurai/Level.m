@@ -7,6 +7,7 @@
 //
 
 #import "Level.h"
+#import "Constants.h"
 
 @implementation Level
 @synthesize name = _name;
@@ -15,6 +16,10 @@
 
 + (Level *)levelWithName:(NSString *)name {
     return [[[self alloc] initWithName:name] autorelease];
+}
+
++ (Level *)firstLevelForGroup:(int)group {
+    return [self levelWithName:[NSString stringWithFormat:@"%d-1", group, nil]];
 }
 
 #pragma mark Initialize
@@ -28,13 +33,32 @@
 
 #pragma mark Instance Methods
 
+- (BOOL)belongsToGroup:(int)group {
+    return ([[self.name substringToIndex:[self.name rangeOfString:@"-"].length] intValue] == group);
+}
+
 - (NSString *)filename {
     return [NSString stringWithFormat:@"%@.tmx", self.name, nil];
 }
 
 - (Level *)nextLevel {
-    // @todo
-    return nil;
+    // @todo: real one
+    Level *level = [Level levelWithName:@"1-1"];
+    if ([self.name compare:level.name] == 0) {
+        level = [Level levelWithName:@"2-1"];
+    }
+    return level;
+}
+
+- (Level *)nextLevelForGroup:(int)group {
+    if (group < 1 || group > LEVEL_GROUPS) return nil;
+
+    int num = [[self.name substringFromIndex:[self.name rangeOfString:@"-"].length + 1] intValue];
+    if (num < (LEVEL_COLUMNS * LEVEL_ROWS)) {
+        return [Level levelWithName:[NSString stringWithFormat:@"%d-%d", group, num + 1]];
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark NSObject
