@@ -65,7 +65,7 @@
         self.contentSize = [CCDirector sharedDirector].winSize;
 
         // Overlay
-        CCSprite *overlay = [CCSprite spriteWithFile:@"overlay.png"];
+        CCSprite *overlay = [CCSprite spriteWithSpriteFrameName:@"overlay.png"];
         overlay.position = ccp(self.contentSize.width / 2, self.contentSize.height / 2);
         [self addChild:overlay];
 

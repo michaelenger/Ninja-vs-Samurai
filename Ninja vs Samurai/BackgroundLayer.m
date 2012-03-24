@@ -42,17 +42,17 @@ CCSprite *clouds;
         CGSize winSize = [CCDirector sharedDirector].winSize;
 
         // Background texture
-        CCSprite *texture = [CCSprite spriteWithFile:@"background.png"];
+        CCSprite *texture = [CCSprite spriteWithSpriteFrameName:@"background.png"];
         texture.position = ccp(winSize.width/2, winSize.height/2);
         [self addChild:texture];
         
         // Landscape
-        CCSprite *landscape = [CCSprite spriteWithFile:@"landscape.png"];
+        CCSprite *landscape = [CCSprite spriteWithSpriteFrameName:@"landscape.png"];
         landscape.position = texture.position;
         [self addChild:landscape];
         
         // Clouds
-        clouds = [[CCSprite spriteWithFile:@"clouds.png"] retain];
+        clouds = [[CCSprite spriteWithSpriteFrameName:@"clouds.png"] retain];
         CGSize cloudSize = [clouds contentSize];
         clouds.position = ccp(winSize.width - cloudSize.width*0.75, winSize.height - cloudSize.height * 1.2);
         [self addChild:clouds];

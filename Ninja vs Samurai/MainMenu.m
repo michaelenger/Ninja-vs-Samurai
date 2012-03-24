@@ -64,7 +64,7 @@
         unsigned int padding = FONT_SIZE_MED * 1.5;
         
         // Title
-        CCSprite *title = [CCSprite spriteWithFile:@"title.png"];
+        CCSprite *title = [CCSprite spriteWithSpriteFrameName:@"title.png"];
         title.position = ccp(self.contentSize.width / 2, self.contentSize.height - (title.contentSize.height));
         [self addChild:title];
         

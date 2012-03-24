@@ -74,7 +74,7 @@
         [self addChild:self.movesLabel];
 
         // Damage splash sprite
-        self.damageIndicator = [CCSprite spriteWithFile:@"damage.png"];
+        self.damageIndicator = [CCSprite spriteWithSpriteFrameName:@"damage.png"];
         self.damageIndicator.position = ccp(self.contentSize.width / 2,
                                             self.contentSize.height / 2);
         self.damageIndicator.opacity = 0;

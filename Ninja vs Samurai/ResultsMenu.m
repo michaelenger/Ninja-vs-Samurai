@@ -27,7 +27,7 @@
         self.contentSize = [CCDirector sharedDirector].winSize;
         
         // Overlay
-        CCSprite *overlay = [CCSprite spriteWithFile:@"overlay.png"];
+        CCSprite *overlay = [CCSprite spriteWithSpriteFrameName:@"overlay.png"];
         overlay.position = ccp(self.contentSize.width / 2, self.contentSize.height / 2);
         [self addChild:overlay];
         
@@ -37,7 +37,7 @@
         [self addChild:titleLabel];
         
         // Stars
-        self.completedStar = [CCSprite spriteWithFile:@"star-empty.png"];
+        self.completedStar = [CCSprite spriteWithSpriteFrameName:@"star-empty.png"];
         self.completedStar.position = ccp((self.contentSize.width * 0.5) / 2,
                                           self.contentSize.height * 0.55);
         [self addChild:self.completedStar];
@@ -50,7 +50,7 @@
         completedLabel.color = FONT_COLOR_LIGHT;
         [self addChild:completedLabel];
         
-        self.movesStar = [CCSprite spriteWithFile:@"star-empty.png"];
+        self.movesStar = [CCSprite spriteWithSpriteFrameName:@"star-empty.png"];
         self.movesStar.position = ccp(self.contentSize.width / 2,
                                       self.contentSize.height * 0.55);
         [self addChild:self.movesStar];
@@ -64,7 +64,7 @@
         movesLabel.color = FONT_COLOR_LIGHT;
         [self addChild:movesLabel];
         
-        self.scrollsStar = [CCSprite spriteWithFile:@"star-empty.png"];
+        self.scrollsStar = [CCSprite spriteWithSpriteFrameName:@"star-empty.png"];
         self.scrollsStar.position = ccp(self.contentSize.width - (self.contentSize.width * 0.5) / 2,
                                         self.contentSize.height * 0.55);
         [self addChild:self.scrollsStar];
@@ -98,7 +98,7 @@
 #pragma mark Instance Methods
 
 - (void)toggleCompletedStarAnimated:(BOOL)animated {
-    CCSprite *star = [CCSprite spriteWithFile:@"star.png"];
+    CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star.png"];
     star.position = self.completedStar.position;
     [self addChild:star];
     if (animated) {
@@ -116,7 +116,7 @@
 }
 
 - (void)toggleScrollsStarAnimated:(BOOL)animated {
-    CCSprite *star = [CCSprite spriteWithFile:@"star.png"];
+    CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star.png"];
     star.position = self.scrollsStar.position;
     [self addChild:star];
     if (animated) {
@@ -134,7 +134,7 @@
 }
 
 - (void)toggleMovesStarAnimated:(BOOL)animated {
-    CCSprite *star = [CCSprite spriteWithFile:@"star.png"];
+    CCSprite *star = [CCSprite spriteWithSpriteFrameName:@"star.png"];
     star.position = self.movesStar.position;
     [self addChild:star];
     if (animated) {
