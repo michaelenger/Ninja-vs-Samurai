@@ -44,9 +44,7 @@
 #pragma mark PlayMenuDelegate
 
 - (void)playLevel:(NSString *)level {
-    // @todo
-    NSLog(@"PLAY LEVEL: %@", level);
-    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:@"1-1.tmx"]];
+    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:level]];
 }
 
 #pragma mark MainMenuDelegate
