@@ -34,18 +34,22 @@
     float x; float y; int i = 0;
     Level *level = [Level firstLevelForGroup:group];
     do {
-        NSString *buttonSprite;
-        NSString *buttonSelectedSprite;
-        if ([Scores scoresForLevel:level].completed) {
-            buttonSprite = @"button-player.png";
-            buttonSelectedSprite = @"button-player-selected.png";
+        CCSprite *buttonSprite;
+        CCSprite *buttonSelectedSprite;
+        Scores *scores = [Scores scoresForLevel:level];
+        if (scores.fullScore) {
+            buttonSprite = [CCSprite spriteWithSpriteFrameName:@"button-star.png"];
+            buttonSelectedSprite = [CCSprite spriteWithSpriteFrameName:@"button-star-selected.png"];
+        } else if (scores.completed) {
+            buttonSprite = [CCSprite spriteWithSpriteFrameName:@"button-player.png"];
+            buttonSelectedSprite = [CCSprite spriteWithSpriteFrameName:@"button-player-selected.png"];
         } else {
-            buttonSprite = @"button-guard.png";
-            buttonSelectedSprite = @"button-guard-selected.png";
+            buttonSprite = [CCSprite spriteWithSpriteFrameName:@"button-guard.png"];
+            buttonSelectedSprite = [CCSprite spriteWithSpriteFrameName:@"button-guard-selected.png"];
         }
-        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:buttonSprite
-                                                         selectedImage:buttonSelectedSprite
-                                                    block:^(id sender){ [menu levelSelect:level]; }];
+        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalSprite:buttonSprite
+                                                         selectedSprite:buttonSelectedSprite
+                                                                  block:^(id sender){ [menu levelSelect:level]; }];
         x = -(button.contentSize.width * LEVEL_COLUMNS / 2) + ((i % LEVEL_COLUMNS) * button.contentSize.width) + (button.contentSize.width / 2);
         y = (button.contentSize.height * LEVEL_ROWS / 2) - (ceil(i / LEVEL_COLUMNS) * button.contentSize.height) - (button.contentSize.height / 2);
         button.position = ccp(x,y);

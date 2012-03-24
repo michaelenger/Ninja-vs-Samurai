@@ -51,6 +51,12 @@
     return self;
 }
 
+#pragma mark Instance Methods
+
+- (BOOL)fullScore {
+    return (self.completed && self.moves && self.scrolls);
+}
+
 - (void)save {
     // Get saved scores
     NSMutableDictionary *scores = [NSMutableDictionary dictionaryWithDictionary:[Storage get:@"scores"]];

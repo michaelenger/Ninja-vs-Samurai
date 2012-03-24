@@ -22,6 +22,9 @@
 // Initialize
 - (id)initWithLevel:(Level *)level;
 
+// Full score
+- (BOOL)fullScore;
+
 // Save the score
 - (void)save;
 
