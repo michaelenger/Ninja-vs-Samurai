@@ -43,9 +43,9 @@
             buttonSprite = @"button-guard.png";
             buttonSelectedSprite = @"button-guard-selected.png";
         }
-        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:buttonSprite]
-                                        selectedSprite:[CCSprite spriteWithFile:buttonSelectedSprite]
-                                                 block:^(id sender){ [menu levelSelect:level]; }];
+        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalImage:buttonSprite
+                                                         selectedImage:buttonSelectedSprite
+                                                    block:^(id sender){ [menu levelSelect:level]; }];
         x = -(button.contentSize.width * LEVEL_COLUMNS / 2) + ((i % LEVEL_COLUMNS) * button.contentSize.width) + (button.contentSize.width / 2);
         y = (button.contentSize.height * LEVEL_ROWS / 2) - (ceil(i / LEVEL_COLUMNS) * button.contentSize.height) - (button.contentSize.height / 2);
         button.position = ccp(x,y);
