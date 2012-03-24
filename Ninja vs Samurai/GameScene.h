@@ -12,7 +12,7 @@
 #import "PauseMenu.h"
 #import "UILayer.h"
 
-@class ActorLayer, BackgroundLayer, MapLayer, UILayer;
+@class ActorLayer, BackgroundLayer, MapLayer, UILayer, Scores;
 @interface GameScene : CCScene <ActorLayerDelegate, FinishedMenuDelegate, PauseMenuDelegate, UILayerDelegate>
 
 @property (strong) ActorLayer *actor;
@@ -20,7 +20,7 @@
 @property (strong) MapLayer *map;
 @property (strong) UILayer *ui;
 @property (strong) NSString *level;
-@property (strong) NSMutableDictionary *playerScore;
+@property (strong) Scores *playerScore;
 
 // Constructor
 + (GameScene *)sceneWithLevel:(NSString *)level;

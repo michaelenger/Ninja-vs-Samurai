@@ -195,6 +195,7 @@
 		4CFF8868151D467B00833767 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFF8867151D467B00833767 /* Menu.m */; };
 		4CFF886B151D504A00833767 /* button-guard-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF8869151D504A00833767 /* button-guard-selected.png */; };
 		4CFF886C151D504A00833767 /* button-guard.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF886A151D504A00833767 /* button-guard.png */; };
+		4CFF886F151D552700833767 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFF886E151D552700833767 /* Scores.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -544,6 +545,8 @@
 		4CFF8867151D467B00833767 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		4CFF8869151D504A00833767 /* button-guard-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-guard-selected.png"; sourceTree = "<group>"; };
 		4CFF886A151D504A00833767 /* button-guard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-guard.png"; sourceTree = "<group>"; };
+		4CFF886D151D552600833767 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
+		4CFF886E151D552700833767 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -645,6 +648,19 @@
 			name = Audio;
 			sourceTree = "<group>";
 		};
+		4C28A995151D5A07009583FC /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4CFF886D151D552600833767 /* Scores.h */,
+				4CFF886E151D552700833767 /* Scores.m */,
+				4CFF8835151C39BF00833767 /* Settings.h */,
+				4CFF8836151C39BF00833767 /* Settings.m */,
+				4C188503151BCAB800C6DF63 /* Storage.h */,
+				4C188504151BCABA00C6DF63 /* Storage.m */,
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
 		4C5ED99115191CF500FEAD81 = {
 			isa = PBXGroup;
 			children = (
@@ -687,12 +703,9 @@
 				4C5EDB2C15191F0900FEAD81 /* Layers */,
 				4C5EDB84151946EB00FEAD81 /* Nodes */,
 				4C5EDB2B15191EFE00FEAD81 /* Scenes */,
+				4C28A995151D5A07009583FC /* Storage */,
 				4C1884FC151B8D8400C6DF63 /* Constants.h */,
 				4C1884FD151B8D8400C6DF63 /* Constants.m */,
-				4C188503151BCAB800C6DF63 /* Storage.h */,
-				4C188504151BCABA00C6DF63 /* Storage.m */,
-				4CFF8835151C39BF00833767 /* Settings.h */,
-				4CFF8836151C39BF00833767 /* Settings.m */,
 				4C5EDB2015191CF800FEAD81 /* AppDelegate.h */,
 				4C5EDB2115191CF800FEAD81 /* AppDelegate.m */,
 				4C5ED9B315191CF600FEAD81 /* Resources */,
@@ -1382,6 +1395,7 @@
 				4CFF8856151D10D700833767 /* PlayMenu.m in Sources */,
 				4CFF8861151D319300833767 /* LevelMenu.m in Sources */,
 				4CFF8868151D467B00833767 /* Menu.m in Sources */,
+				4CFF886F151D552700833767 /* Scores.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
