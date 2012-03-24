@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="3" height="3" tilewidth="40" tileheight="40">
+<map version="1.0" orientation="orthogonal" width="4" height="4" tilewidth="40" tileheight="40">
  <properties>
-  <property name="moves" value="4"/>
+  <property name="moves" value="6"/>
  </properties>
  <tileset firstgid="1" name="tiles" tilewidth="40" tileheight="40" spacing="2" margin="2">
   <image source="tiles.png" width="256" height="256"/>
@@ -50,14 +50,14 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Level" width="3" height="3">
+ <layer name="Level" width="4" height="4">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYELCXGh8EAYAAiwAGw==
+   eJzjYmBgYMKCudDYXDjUAQAJYABB
   </data>
  </layer>
- <layer name="Actors" width="3" height="3">
+ <layer name="Actors" width="4" height="4">
   <data encoding="base64" compression="zlib">
-   eJzjYMAPGIEYAAFIAAo=
+   eJxjYGBgYGVABRwM2AEnEpsFiBmBGAADpAAc
   </data>
  </layer>
 </map>
