@@ -8,12 +8,13 @@
 
 #import "LevelMenu.h"
 #import "Constants.h"
+#import "Level.h"
 #import "Scores.h"
 
 @interface LevelMenu (Private)
 
 // Select a level
-- (void)levelSelect:(NSString *)level;
+- (void)levelSelect:(Level *)level;
 
 @end
 
@@ -33,7 +34,7 @@
     int maxLevels = (LEVEL_ROWS * LEVEL_COLUMNS);
     float x; float y;
     for (int i = 0; i < maxLevels; i++) {
-        NSString *level = [NSString stringWithFormat:@"%d-%d.tmx",group,i+1,nil];
+        Level *level = [Level levelWithName:[NSString stringWithFormat:@"%d-%d",group,i+1,nil]];
         NSString *buttonSprite;
         NSString *buttonSelectedSprite;
         if ([Scores scoresForLevel:level].completed) {
@@ -57,12 +58,12 @@
 
 #pragma mark Instance Methods
 
-- (BOOL)hasLevel:(NSString *)level {
-    int group = [[level substringToIndex:[level rangeOfString:@"-"].length] intValue];
+- (BOOL)hasLevel:(Level *)level {
+    int group = [[level.name substringToIndex:[level.name rangeOfString:@"-"].length] intValue];
     return (group == self.group);
 }
 
-- (void)levelSelect:(NSString *)level {
+- (void)levelSelect:(Level *)level {
     if (self.delegate && [self.delegate respondsToSelector:@selector(selectLevel:)]) {
         [self.delegate selectLevel:level];
     }

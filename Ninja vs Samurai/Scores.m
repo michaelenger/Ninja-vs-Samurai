@@ -7,6 +7,7 @@
 //
 
 #import "Scores.h"
+#import "Level.h"
 #import "Storage.h"
 
 @implementation Scores
@@ -17,13 +18,13 @@
 
 #pragma mark Class Methods
 
-+ (Scores *)scoresForLevel:(NSString *)level {
++ (Scores *)scoresForLevel:(Level *)level {
     return [[[self alloc] initWithLevel:level] autorelease];
 }
 
 #pragma mark Initialize
 
-- (id)initWithLevel:(NSString *)level {
+- (id)initWithLevel:(Level *)level {
     if ((self = [self init])) {
         self.level = level;
 
@@ -40,7 +41,7 @@
             scores = [Storage get:@"scores"];
         }
 
-        scores = [scores objectForKey:level];
+        scores = [scores objectForKey:level.name];
         if (scores) {
             self.completed = [((NSNumber *)[scores objectForKey:@"completed"]) boolValue];
             self.moves = [((NSNumber *)[scores objectForKey:@"moves"]) boolValue];
@@ -60,7 +61,7 @@
                            [NSNumber numberWithBool:self.scrolls],@"scrolls",
                            nil];
 
-    [scores setObject:score forKey:self.level];
+    [scores setObject:score forKey:self.level.name];
     [Storage set:scores forKey:@"scores"];
 }
 

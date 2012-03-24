@@ -12,21 +12,21 @@
 #import "PauseMenu.h"
 #import "UILayer.h"
 
-@class ActorLayer, BackgroundLayer, MapLayer, UILayer, Scores;
+@class ActorLayer, BackgroundLayer, Level, MapLayer, UILayer, Scores;
 @interface GameScene : CCScene <ActorLayerDelegate, FinishedMenuDelegate, PauseMenuDelegate, UILayerDelegate>
 
 @property (strong) ActorLayer *actor;
 @property (strong) BackgroundLayer *background;
 @property (strong) MapLayer *map;
 @property (strong) UILayer *ui;
-@property (strong) NSString *level;
+@property (strong) Level *level;
 @property (strong) Scores *playerScore;
 
 // Constructor
-+ (GameScene *)sceneWithLevel:(NSString *)level;
++ (GameScene *)sceneWithLevel:(Level *)level;
 
 // Initialize
-- (id)initWithLevel:(NSString *)level;
+- (id)initWithLevel:(Level *)level;
 
 // Hide/show game elements
 - (void)hide;

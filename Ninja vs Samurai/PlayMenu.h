@@ -11,6 +11,7 @@
 #import "Menu.h"
 
 @protocol PlayMenuDelegate;
+@class Level;
 @interface PlayMenu : Menu <LevelMenuDelegate>
 
 @property (assign, readonly) unsigned int currentMenu;
@@ -26,7 +27,7 @@
 - (id)initWithDelegate:(id<PlayMenuDelegate>)delegate;
 
 // Show the menu for a specific level
-- (void)showMenuForLevel:(NSString *)level;
+- (void)showMenuForLevel:(Level *)level;
 
 // Set the current level menu
 - (void)setCurrentMenu:(unsigned int)currentMenu;
@@ -41,6 +42,6 @@
 - (void)backAction;
 
 // Play a specific level
-- (void)playLevel:(NSString *)level;
+- (void)playLevel:(Level *)level;
 
 @end

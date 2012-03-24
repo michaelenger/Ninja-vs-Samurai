@@ -9,6 +9,7 @@
 #import "cocos2d.h"
 
 @protocol LevelMenuDelegate;
+@class Level;
 @interface LevelMenu : CCMenu
 
 @property (strong) id<LevelMenuDelegate> delegate;
@@ -18,7 +19,7 @@
 + (LevelMenu *)menuWithDelegate:(id<LevelMenuDelegate>)delegate group:(unsigned int)group;
 
 // Checks if the menu has a specific level
-- (BOOL)hasLevel:(NSString *)level;
+- (BOOL)hasLevel:(Level *)level;
 
 @end
 
@@ -26,6 +27,6 @@
 @required
 
 // Select a level
-- (void)selectLevel:(NSString *)level;
+- (void)selectLevel:(Level *)level;
 
 @end

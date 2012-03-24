@@ -21,6 +21,6 @@
 
 // Constructors
 + (MainScene *)scene;
-+ (MainScene *)sceneFromLevel:(NSString *)level;
++ (MainScene *)sceneFromLevel:(Level *)level;
 
 @end

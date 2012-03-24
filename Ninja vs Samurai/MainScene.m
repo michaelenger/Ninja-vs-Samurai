@@ -25,7 +25,7 @@
     return [self node];
 }
 
-+ (MainScene *)sceneFromLevel:(NSString *)level {
++ (MainScene *)sceneFromLevel:(Level *)level {
     MainScene *scene = [self scene];
     [scene.playMenu showMenuForLevel:level];
     [scene playAction];
@@ -43,7 +43,7 @@
 
 #pragma mark PlayMenuDelegate
 
-- (void)playLevel:(NSString *)level {
+- (void)playLevel:(Level *)level {
     [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:level]];
 }
 

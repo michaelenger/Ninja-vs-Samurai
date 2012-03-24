@@ -8,18 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class Level;
 @interface Scores : NSObject
 
-@property (strong) NSString * level;
+@property (strong) Level * level;
 @property (assign) BOOL completed;
 @property (assign) BOOL moves;
 @property (assign) BOOL scrolls;
 
 // Constructor
-+ (Scores *)scoresForLevel:(NSString *)level;
++ (Scores *)scoresForLevel:(Level *)level;
 
 // Initialize
-- (id)initWithLevel:(NSString *)level;
+- (id)initWithLevel:(Level *)level;
 
 // Save the score
 - (void)save;

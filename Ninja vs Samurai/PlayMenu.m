@@ -53,7 +53,7 @@
     [self setCurrentMenu:self.currentMenu-1 animated:YES];
 }
 
-- (void)showMenuForLevel:(NSString *)level {
+- (void)showMenuForLevel:(Level *)level {
     for (unsigned int i = 0; i < LEVEL_GROUPS; i++) {
         LevelMenu *menu = (LevelMenu *)[self.levelMenus objectAtIndex:i];
         if ([menu hasLevel:level]) {
@@ -107,7 +107,7 @@
 
 #pragma mark LevelMenuDelegate
 
-- (void)selectLevel:(NSString *)level {
+- (void)selectLevel:(Level *)level {
     if (self.delegate && [self.delegate respondsToSelector:@selector(playLevel:)]) {
         [self.delegate playLevel:level];
     }

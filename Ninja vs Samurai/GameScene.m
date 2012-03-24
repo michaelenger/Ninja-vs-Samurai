@@ -11,6 +11,7 @@
 #import "BackgroundLayer.h"
 #import "FinishedMenu.h"
 #import "GameMap.h"
+#import "Level.h"
 #import "MainScene.h"
 #import "MapLayer.h"
 #import "PauseMenu.h"
@@ -30,16 +31,16 @@
 
 #pragma mark Class Methods
 
-+ (GameScene *)sceneWithLevel:(NSString *)level {
++ (GameScene *)sceneWithLevel:(Level *)level {
     return [[[self alloc] initWithLevel:level] autorelease];
 }
 
 #pragma mark Initialize
 
-- (id)initWithLevel:(NSString *)level {
+- (id)initWithLevel:(Level *)level {
     if ((self = [self init])) {
         self.level = level;
-        GameMap *map = [GameMap tiledMapWithTMXFile:level];
+        GameMap *map = [GameMap tiledMapWithTMXFile:level.filename];
         
         // Background
         self.background = [BackgroundLayer layer];
@@ -164,9 +165,9 @@
 #pragma mark FinishedMenuDelegate/PauseMenuDelegate
 
 - (void)nextAction {
-    NSString *level = @"1-1.tmx";
-    if ([self.level compare:level] == 0) {
-        level = @"2-1.tmx";
+    Level *level = [Level levelWithName:@"1-1"];
+    if ([self.level.name compare:level.name] == 0) {
+        level = [Level levelWithName:@"2-1"];
     }
     [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:level]];
 }
