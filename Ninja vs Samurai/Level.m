@@ -9,6 +9,14 @@
 #import "Level.h"
 #import "Constants.h"
 
+@interface Level (Private)
+
+// Extract the group/number from the name
+- (int)groupFromName:(NSString *)name;
+- (int)numberFromName:(NSString *)name;
+
+@end
+
 @implementation Level
 @synthesize name = _name;
 
@@ -34,31 +42,46 @@
 #pragma mark Instance Methods
 
 - (BOOL)belongsToGroup:(int)group {
-    return ([[self.name substringToIndex:[self.name rangeOfString:@"-"].length] intValue] == group);
+    return ([self groupFromName:self.name] == group);
 }
 
 - (NSString *)filename {
     return [NSString stringWithFormat:@"%@.tmx", self.name, nil];
 }
 
+- (int)groupFromName:(NSString *)name {
+    return [[name substringToIndex:[name rangeOfString:@"-"].length] intValue];
+}
+
 - (Level *)nextLevel {
-    // @todo: real one
-    Level *level = [Level levelWithName:@"1-1"];
-    if ([self.name compare:level.name] == 0) {
-        level = [Level levelWithName:@"2-1"];
+    int group = [self groupFromName:self.name];
+    int number = [self numberFromName:self.name];
+
+    number++;
+    if (number >= (LEVEL_COLUMNS * LEVEL_ROWS)) {
+        group++;
+        number = 1;
     }
-    return level;
+    if (group > LEVEL_GROUPS) {
+        group = 1;
+    }
+
+    return [Level levelWithName:[NSString stringWithFormat:@"%d-%d", group, number, nil]];
 }
 
 - (Level *)nextLevelForGroup:(int)group {
     if (group < 1 || group > LEVEL_GROUPS) return nil;
 
-    int num = [[self.name substringFromIndex:[self.name rangeOfString:@"-"].length + 1] intValue];
+    int num = [self numberFromName:self.name];
     if (num < (LEVEL_COLUMNS * LEVEL_ROWS)) {
         return [Level levelWithName:[NSString stringWithFormat:@"%d-%d", group, num + 1]];
     } else {
         return nil;
     }
+}
+
+- (int)numberFromName:(NSString *)name {
+    return [[name substringFromIndex:[name rangeOfString:@"-"].length + 1] intValue];
 }
 
 #pragma mark NSObject
