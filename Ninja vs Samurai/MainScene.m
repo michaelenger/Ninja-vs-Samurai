@@ -25,6 +25,13 @@
     return [self node];
 }
 
++ (MainScene *)sceneFromLevel:(NSString *)level {
+    MainScene *scene = [self scene];
+    [scene.playMenu setCurrentMenu:[[level substringToIndex:[level rangeOfString:@"-"].length] intValue]-1 animated:NO];
+    [scene playAction];
+    return scene;
+}
+
 #pragma mark CreditsMenuDelegate/PlayMenuDelegate/SettingsMenuDelegate
 
 - (void)backAction {
@@ -39,7 +46,7 @@
 - (void)playLevel:(NSString *)level {
     // @todo
     NSLog(@"PLAY LEVEL: %@", level);
-    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:@"testmap.tmx"]];
+    [[CCDirector sharedDirector] replaceScene:[GameScene sceneWithLevel:@"1-1.tmx"]];
 }
 
 #pragma mark MainMenuDelegate

@@ -18,7 +18,7 @@
 		4C188502151BC01A00C6DF63 /* star-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C188501151BC01A00C6DF63 /* star-empty.png */; };
 		4C188505151BCABC00C6DF63 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C188504151BCABA00C6DF63 /* Storage.m */; };
 		4C188508151BE7E800C6DF63 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C188507151BE7E800C6DF63 /* overlay.png */; };
-		4C18850A151BF14100C6DF63 /* tinymap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 4C188509151BF14100C6DF63 /* tinymap.tmx */; };
+		4C18850A151BF14100C6DF63 /* 1-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 4C188509151BF14100C6DF63 /* 1-1.tmx */; };
 		4C18850D151BFACC00C6DF63 /* PauseMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18850C151BFACC00C6DF63 /* PauseMenu.m */; };
 		4C188510151BFB0300C6DF63 /* ResultsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C18850F151BFB0300C6DF63 /* ResultsMenu.m */; };
 		4C188513151C073300C6DF63 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C188512151C073300C6DF63 /* MainScene.m */; };
@@ -161,7 +161,7 @@
 		4C5EDB401519231200FEAD81 /* landscape-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EDB3E1519231200FEAD81 /* landscape-hd.png */; };
 		4C5EDB43151923FF00FEAD81 /* clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EDB41151923FF00FEAD81 /* clouds.png */; };
 		4C5EDB44151923FF00FEAD81 /* clouds-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EDB42151923FF00FEAD81 /* clouds-hd.png */; };
-		4C5EDB4815192DCE00FEAD81 /* testmap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EDB4515192DCE00FEAD81 /* testmap.tmx */; };
+		4C5EDB4815192DCE00FEAD81 /* 2-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EDB4515192DCE00FEAD81 /* 2-1.tmx */; };
 		4C5EDB4915192DCE00FEAD81 /* spritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EDB4615192DCE00FEAD81 /* spritesheet.png */; };
 		4C5EDB4A15192DCE00FEAD81 /* spritesheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EDB4715192DCE00FEAD81 /* spritesheet.plist */; };
 		4C5EDB4E15193DB700FEAD81 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EDB4D15193DB700FEAD81 /* Actor.m */; };
@@ -216,7 +216,7 @@
 		4C188503151BCAB800C6DF63 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		4C188504151BCABA00C6DF63 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		4C188507151BE7E800C6DF63 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
-		4C188509151BF14100C6DF63 /* tinymap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tinymap.tmx; sourceTree = "<group>"; };
+		4C188509151BF14100C6DF63 /* 1-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "1-1.tmx"; sourceTree = "<group>"; };
 		4C18850B151BFACB00C6DF63 /* PauseMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenu.h; sourceTree = "<group>"; };
 		4C18850C151BFACC00C6DF63 /* PauseMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenu.m; sourceTree = "<group>"; };
 		4C18850E151BFB0300C6DF63 /* ResultsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsMenu.h; sourceTree = "<group>"; };
@@ -501,7 +501,7 @@
 		4C5EDB3E1519231200FEAD81 /* landscape-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscape-hd.png"; sourceTree = "<group>"; };
 		4C5EDB41151923FF00FEAD81 /* clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds.png; sourceTree = "<group>"; };
 		4C5EDB42151923FF00FEAD81 /* clouds-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clouds-hd.png"; sourceTree = "<group>"; };
-		4C5EDB4515192DCE00FEAD81 /* testmap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testmap.tmx; sourceTree = "<group>"; };
+		4C5EDB4515192DCE00FEAD81 /* 2-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "2-1.tmx"; sourceTree = "<group>"; };
 		4C5EDB4615192DCE00FEAD81 /* spritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spritesheet.png; sourceTree = "<group>"; };
 		4C5EDB4715192DCE00FEAD81 /* spritesheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = spritesheet.plist; sourceTree = "<group>"; };
 		4C5EDB4C15193DB700FEAD81 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
@@ -629,8 +629,8 @@
 		4C188506151BDFB600C6DF63 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				4C5EDB4515192DCE00FEAD81 /* testmap.tmx */,
-				4C188509151BF14100C6DF63 /* tinymap.tmx */,
+				4C5EDB4515192DCE00FEAD81 /* 2-1.tmx */,
+				4C188509151BF14100C6DF63 /* 1-1.tmx */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1224,7 +1224,7 @@
 				4C5EDB401519231200FEAD81 /* landscape-hd.png in Resources */,
 				4C5EDB43151923FF00FEAD81 /* clouds.png in Resources */,
 				4C5EDB44151923FF00FEAD81 /* clouds-hd.png in Resources */,
-				4C5EDB4815192DCE00FEAD81 /* testmap.tmx in Resources */,
+				4C5EDB4815192DCE00FEAD81 /* 2-1.tmx in Resources */,
 				4C5EDB4915192DCE00FEAD81 /* spritesheet.png in Resources */,
 				4C5EDB4A15192DCE00FEAD81 /* spritesheet.plist in Resources */,
 				4C1884F5151B766B00C6DF63 /* damage.png in Resources */,
@@ -1232,7 +1232,7 @@
 				4C188500151BBBCA00C6DF63 /* star.png in Resources */,
 				4C188502151BC01A00C6DF63 /* star-empty.png in Resources */,
 				4C188508151BE7E800C6DF63 /* overlay.png in Resources */,
-				4C18850A151BF14100C6DF63 /* tinymap.tmx in Resources */,
+				4C18850A151BF14100C6DF63 /* 1-1.tmx in Resources */,
 				4C18851C151C1D2C00C6DF63 /* music-menu.mp3 in Resources */,
 				4C188523151C1DD200C6DF63 /* attack.mp3 in Resources */,
 				4C188525151C1DD200C6DF63 /* music-game.mp3 in Resources */,

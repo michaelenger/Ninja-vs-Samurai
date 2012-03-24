@@ -19,7 +19,8 @@
 @property (strong) PlayMenu *playMenu;
 @property (strong) SettingsMenu *settingsMenu;
 
-// Constructor
+// Constructors
 + (MainScene *)scene;
++ (MainScene *)sceneFromLevel:(NSString *)level;
 
 @end

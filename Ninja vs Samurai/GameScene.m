@@ -164,15 +164,15 @@
 #pragma mark FinishedMenuDelegate/PauseMenuDelegate
 
 - (void)nextAction {
-    NSString *level = @"testmap.tmx";
+    NSString *level = @"1-1.tmx";
     if ([self.level compare:level] == 0) {
-        level = @"tinymap.tmx";
+        level = @"2-1.tmx";
     }
     [[CCDirector sharedDirector] replaceScene: [GameScene sceneWithLevel:level]];
 }
 
 - (void)quitAction {
-    [[CCDirector sharedDirector] replaceScene: [MainScene scene]];
+    [[CCDirector sharedDirector] replaceScene: [MainScene sceneFromLevel:self.level]];
 }
 
 - (void)retryAction {
