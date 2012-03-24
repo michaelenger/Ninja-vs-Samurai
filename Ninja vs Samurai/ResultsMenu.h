@@ -7,10 +7,10 @@
 //
 
 #import "cocos2d.h"
+#import "Menu.h"
 
-@interface ResultsMenu : CCNode
+@interface ResultsMenu : Menu
 
-@property (strong) CCMenu *menu;
 @property (strong) CCSprite *completedStar;
 @property (strong) CCSprite *scrollsStar;
 @property (strong) CCSprite *movesStar;

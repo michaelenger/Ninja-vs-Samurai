@@ -8,14 +8,14 @@
 
 #import "cocos2d.h"
 #import "LevelMenu.h"
+#import "Menu.h"
 
 @protocol PlayMenuDelegate;
-@interface PlayMenu : CCNode <LevelMenuDelegate>
+@interface PlayMenu : Menu <LevelMenuDelegate>
 
 @property (assign) unsigned int currentMenu;
 @property (strong) id<PlayMenuDelegate> delegate;
 @property (strong) NSArray *levelMenus;
-@property (strong) CCMenu *menu;
 @property (strong) CCMenuItem *nextButton;
 @property (strong) CCMenuItem *previousButton;
 

@@ -7,13 +7,13 @@
 //
 
 #import "cocos2d.h"
+#import "Menu.h"
 
 @protocol SettingsMenuDelegate;
-@interface SettingsMenu : CCNode
+@interface SettingsMenu : Menu
 
 @property (strong) id<SettingsMenuDelegate> delegate;
 @property (strong) CCMenuItemLabel *effectsButton;
-@property (strong) CCMenu *menu;
 @property (strong) CCMenuItemLabel *musicButton;
 
 // Constructor

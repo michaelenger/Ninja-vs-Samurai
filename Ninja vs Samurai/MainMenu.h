@@ -7,13 +7,13 @@
 //
 
 #import "cocos2d.h"
+#import "Menu.h"
 
 @protocol MainMenuDelegate;
-@interface MainMenu : CCNode
+@interface MainMenu : Menu
 
 @property (assign) float animationDelay;
 @property (strong) id<MainMenuDelegate> delegate;
-@property (strong) CCMenu *menu;
 @property (strong) CCSprite *ninja;
 
 // Constructor

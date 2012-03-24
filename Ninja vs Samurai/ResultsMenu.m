@@ -10,8 +10,7 @@
 #import "Constants.h"
 
 @implementation ResultsMenu
-@synthesize menu = _menu,
-            completedStar = _completedStar,
+@synthesize completedStar = _completedStar,
             scrollsStar = _scrollsStar,
             movesStar = _movesStar;
 
@@ -155,7 +154,6 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-    self.menu = nil;
     self.completedStar = nil;
     self.scrollsStar = nil;
     self.movesStar = nil;

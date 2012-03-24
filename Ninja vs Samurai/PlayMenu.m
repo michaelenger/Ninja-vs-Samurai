@@ -25,7 +25,6 @@
 @synthesize currentMenu = _currentMenu,
             delegate = _delegate,
             levelMenus = _levelMenus,
-            menu = _menu,
             nextButton = _nextButton,
             previousButton = _previousButton;
 
@@ -167,7 +166,6 @@
 - (void)dealloc {
     self.delegate = nil;
     self.levelMenus = nil;
-    self.menu = nil;
     self.nextButton = nil;
     self.previousButton = nil;
     [super dealloc];

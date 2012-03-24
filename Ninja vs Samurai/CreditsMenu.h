@@ -7,12 +7,12 @@
 //
 
 #import "cocos2d.h"
+#import "Menu.h"
 
 @protocol CreditsMenuDelegate;
-@interface CreditsMenu : CCNode
+@interface CreditsMenu : Menu
 
 @property (strong) id<CreditsMenuDelegate> delegate;
-@property (strong) CCMenu *menu;
 
 // Constructor
 + (CreditsMenu *)menuWithDelegate:(id<CreditsMenuDelegate>)delegate;

@@ -12,7 +12,6 @@
 @implementation MainMenu
 @synthesize animationDelay = _animationDelay,
             delegate = _delegate,
-            menu = _menu,
             ninja = _ninja;
 
 #pragma mark Class Methods
@@ -62,7 +61,6 @@
 
 - (id)init {
     if ((self = [super init])) {
-        self.contentSize = [CCDirector sharedDirector].winSize;
         unsigned int padding = FONT_SIZE_MED * 1.5;
         
         // Title
@@ -115,7 +113,6 @@
 
 - (void)dealloc {
     self.delegate = nil;
-    self.menu = nil;
     self.ninja = nil;
     [super dealloc];
 }

@@ -17,8 +17,7 @@
 @end
 
 @implementation CreditsMenu
-@synthesize delegate = _delegate,
-            menu = _menu;
+@synthesize delegate = _delegate;
 
 #pragma mark Class Methods
 
@@ -111,7 +110,6 @@
 
 - (void)dealloc {
     self.delegate = nil;
-    self.menu = nil;
     [super dealloc];
 }
 

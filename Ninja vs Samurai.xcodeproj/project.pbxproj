@@ -192,6 +192,7 @@
 		4CFF8861151D319300833767 /* LevelMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFF8860151D319200833767 /* LevelMenu.m */; };
 		4CFF8864151D350700833767 /* button-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF8862151D350700833767 /* button-player.png */; };
 		4CFF8865151D350700833767 /* button-player-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFF8863151D350700833767 /* button-player-selected.png */; };
+		4CFF8868151D467B00833767 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFF8867151D467B00833767 /* Menu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -537,6 +538,8 @@
 		4CFF8860151D319200833767 /* LevelMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelMenu.m; sourceTree = "<group>"; };
 		4CFF8862151D350700833767 /* button-player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-player.png"; sourceTree = "<group>"; };
 		4CFF8863151D350700833767 /* button-player-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-player-selected.png"; sourceTree = "<group>"; };
+		4CFF8866151D467B00833767 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		4CFF8867151D467B00833767 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -592,6 +595,8 @@
 		4C1884F8151B826700C6DF63 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
+				4CFF8866151D467B00833767 /* Menu.h */,
+				4CFF8867151D467B00833767 /* Menu.m */,
 				4C18852C151C249700C6DF63 /* CreditsMenu.h */,
 				4C18852D151C249700C6DF63 /* CreditsMenu.m */,
 				4C1884F9151B827A00C6DF63 /* FinishedMenu.h */,
@@ -1368,6 +1373,7 @@
 				4CFF8837151C39BF00833767 /* Settings.m in Sources */,
 				4CFF8856151D10D700833767 /* PlayMenu.m in Sources */,
 				4CFF8861151D319300833767 /* LevelMenu.m in Sources */,
+				4CFF8868151D467B00833767 /* Menu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

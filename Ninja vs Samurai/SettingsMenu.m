@@ -14,7 +14,6 @@
 @implementation SettingsMenu
 @synthesize delegate = _delegate,
             effectsButton = _effectsButton,
-            menu = _menu,
             musicButton = _musicButton;
 
 #pragma mark Class Methods
@@ -67,8 +66,6 @@
 
 - (id)init {
     if ((self = [super init])) {
-        self.contentSize = [CCDirector sharedDirector].winSize;
-        
         // Overlay
         CCSprite *overlay = [CCSprite spriteWithFile:@"overlay.png"];
         overlay.position = ccp(self.contentSize.width / 2, self.contentSize.height / 2);
@@ -114,7 +111,6 @@
 - (void)dealloc {
     self.delegate = nil;
     self.effectsButton = nil;
-    self.menu = nil;
     self.musicButton = nil;
     [super dealloc];
 }
