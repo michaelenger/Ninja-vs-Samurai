@@ -58,7 +58,7 @@
     int number = [self numberFromName:self.name];
 
     number++;
-    if (number >= (LEVEL_COLUMNS * LEVEL_ROWS)) {
+    if (number > (LEVEL_COLUMNS * LEVEL_ROWS)) {
         group++;
         number = 1;
     }
