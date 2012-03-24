@@ -13,7 +13,7 @@
 @protocol PlayMenuDelegate;
 @interface PlayMenu : Menu <LevelMenuDelegate>
 
-@property (assign) unsigned int currentMenu;
+@property (assign, readonly) unsigned int currentMenu;
 @property (strong) id<PlayMenuDelegate> delegate;
 @property (strong) NSArray *levelMenus;
 @property (strong) CCMenuItem *nextButton;
@@ -24,6 +24,10 @@
 
 // Initialize
 - (id)initWithDelegate:(id<PlayMenuDelegate>)delegate;
+
+// Set the current level menu
+- (void)setCurrentMenu:(unsigned int)currentMenu;
+- (void)setCurrentMenu:(unsigned int)currentMenu animated:(BOOL)animated;
 
 @end
 

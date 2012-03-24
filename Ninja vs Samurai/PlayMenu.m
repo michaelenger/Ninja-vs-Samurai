@@ -46,46 +46,46 @@
 #pragma mark Instance Methods
 
 - (void)nextMenu {
-    float duration = 0.3;
-    LevelMenu *current = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu];
-    LevelMenu *next = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu + 1];
-
-    [current runAction:[CCSequence actions:
-                        [CCEaseInOut actionWithAction:[CCMoveTo
-                                                       actionWithDuration:duration
-                                                       position:ccp(-current.contentSize.width / 2,current.position.y)] rate:2],
-                        [CCCallBlock actionWithBlock:^{ current.visible = NO; }],
-                        nil]];
-    [next runAction:[CCSequence actions:
-                        [CCCallBlock actionWithBlock:^{ next.visible = YES; }],
-                        [CCEaseInOut actionWithAction:[CCMoveTo
-                                                       actionWithDuration:duration
-                                                       position:ccp(self.contentSize.width / 2,next.position.y)] rate:2],
-                        nil]];
-
-    self.currentMenu++;
-    [self updateButtons];
+    [self setCurrentMenu:self.currentMenu+1 animated:YES];
 }
 
 - (void)previousMenu {
-    float duration = 0.3;
+    [self setCurrentMenu:self.currentMenu-1 animated:YES];
+}
+
+- (void)setCurrentMenu:(unsigned int)currentMenu {
+    [self setCurrentMenu:currentMenu animated:NO];
+}
+
+- (void)setCurrentMenu:(unsigned int)currentMenu animated:(BOOL)animated {
+    if (currentMenu >= LEVEL_GROUPS || currentMenu == _currentMenu) return;
+
     LevelMenu *current = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu];
-    LevelMenu *previous = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu - 1];
+    LevelMenu *next = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu + (currentMenu > _currentMenu ? 1 : -1)];
 
-    [current runAction:[CCSequence actions:
-                        [CCEaseInOut actionWithAction:[CCMoveTo
-                                                       actionWithDuration:duration
-                                                       position:ccp(self.contentSize.width + (current.contentSize.width / 2),current.position.y)] rate:2],
-                        [CCCallBlock actionWithBlock:^{ current.visible = NO; }],
-                        nil]];
-    [previous runAction:[CCSequence actions:
-                     [CCCallBlock actionWithBlock:^{ previous.visible = YES; }],
-                     [CCEaseInOut actionWithAction:[CCMoveTo
-                                                    actionWithDuration:duration
-                                                    position:ccp(self.contentSize.width / 2,previous.position.y)] rate:2],
-                     nil]];
+    if (animated) {
+        float duration = 0.3;
+        CGPoint offset;
 
-    self.currentMenu--;
+        offset = ccp(current.contentSize.width * (currentMenu > _currentMenu ? -1 : 1), 0);
+        [current runAction:[CCSequence actions:
+                            [CCEaseInOut actionWithAction:[CCMoveBy actionWithDuration:duration position:offset] rate:2],
+                            [CCCallBlock actionWithBlock:^{ current.visible = NO; }],
+                            nil]];
+        offset = ccp(current.contentSize.width * (currentMenu > _currentMenu ? 1 : -1), 0);
+        next.position = ccp(self.contentSize.width / 2 + offset.x, next.position.y + offset.y);
+        offset = ccp(current.contentSize.width * (currentMenu > _currentMenu ? -1 : 1), 0);
+        [next runAction:[CCSequence actions:
+                         [CCCallBlock actionWithBlock:^{ next.visible = YES; }],
+                         [CCEaseInOut actionWithAction:[CCMoveBy actionWithDuration:duration position:offset] rate:2],
+                         nil]];
+    } else {
+        current.visible = NO;
+        next.visible = YES;
+        next.position = ccp(self.contentSize.width / 2, next.position.y);
+    }
+
+    _currentMenu = currentMenu;
     [self updateButtons];
 }
 
@@ -107,8 +107,7 @@
 
 - (id)init {
     if ((self = [super init])) {
-        self.contentSize = [CCDirector sharedDirector].winSize;
-        self.currentMenu = 0;
+        _currentMenu = 0;
 
         // Overlay
         CCSprite *overlay = [CCSprite spriteWithFile:@"overlay.png"];
