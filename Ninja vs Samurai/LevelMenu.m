@@ -13,7 +13,7 @@
 @interface LevelMenu (Private)
 
 // Select a level
-- (void)levelSelect:(int)level;
+- (void)levelSelect:(NSString *)level;
 
 @end
 
@@ -34,17 +34,18 @@
     float x; float y;
     for (int i = 0; i < maxLevels; i++) {
         NSString *level = [NSString stringWithFormat:@"%d-%d.tmx",group,i+1,nil];
-        Scores *scores = [Scores scoresForLevel:level];
-        CCMenuItemImage *button;
-        if (scores.completed) {
-            button = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"button-player.png"]
-                                                                    selectedSprite:[CCSprite spriteWithFile:@"button-player-selected.png"]
-                                                                            block:^(id sender){ [menu levelSelect:i+1]; }];
+        NSString *buttonSprite;
+        NSString *buttonSelectedSprite;
+        if ([Scores scoresForLevel:level].completed) {
+            buttonSprite = @"button-player.png";
+            buttonSelectedSprite = @"button-player-selected.png";
         } else {
-            button = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"button-guard.png"]
-                                            selectedSprite:[CCSprite spriteWithFile:@"button-guard-selected.png"]
-                                                     block:^(id sender){ [menu levelSelect:i+1]; }];
+            buttonSprite = @"button-guard.png";
+            buttonSelectedSprite = @"button-guard-selected.png";
         }
+        CCMenuItemImage *button = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:buttonSprite]
+                                        selectedSprite:[CCSprite spriteWithFile:buttonSelectedSprite]
+                                                 block:^(id sender){ [menu levelSelect:level]; }];
         x = -(button.contentSize.width * LEVEL_COLUMNS / 2) + ((i % LEVEL_COLUMNS) * button.contentSize.width) + (button.contentSize.width / 2);
         y = (button.contentSize.height * LEVEL_ROWS / 2) - (ceil(i / LEVEL_COLUMNS) * button.contentSize.height) - (button.contentSize.height / 2);
         button.position = ccp(x,y);
@@ -56,9 +57,14 @@
 
 #pragma mark Instance Methods
 
-- (void)levelSelect:(int)level {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(selectLevel:fromGroup:)]) {
-        [self.delegate selectLevel:level fromGroup:self.group];
+- (BOOL)hasLevel:(NSString *)level {
+    int group = [[level substringToIndex:[level rangeOfString:@"-"].length] intValue];
+    return (group == self.group);
+}
+
+- (void)levelSelect:(NSString *)level {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectLevel:)]) {
+        [self.delegate selectLevel:level];
     }
 }
 

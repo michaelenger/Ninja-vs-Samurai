@@ -17,12 +17,15 @@
 // Construtor
 + (LevelMenu *)menuWithDelegate:(id<LevelMenuDelegate>)delegate group:(unsigned int)group;
 
+// Checks if the menu has a specific level
+- (BOOL)hasLevel:(NSString *)level;
+
 @end
 
 @protocol LevelMenuDelegate <NSObject>
 @required
 
 // Select a level
-- (void)selectLevel:(int)level fromGroup:(int)group;
+- (void)selectLevel:(NSString *)level;
 
 @end

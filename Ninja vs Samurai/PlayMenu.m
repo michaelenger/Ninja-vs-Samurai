@@ -53,6 +53,16 @@
     [self setCurrentMenu:self.currentMenu-1 animated:YES];
 }
 
+- (void)showMenuForLevel:(NSString *)level {
+    for (unsigned int i = 0; i < LEVEL_GROUPS; i++) {
+        LevelMenu *menu = (LevelMenu *)[self.levelMenus objectAtIndex:i];
+        if ([menu hasLevel:level]) {
+            [self setCurrentMenu:i animated:NO];
+            break;
+        }
+    }
+}
+
 - (void)setCurrentMenu:(unsigned int)currentMenu {
     [self setCurrentMenu:currentMenu animated:NO];
 }
@@ -97,9 +107,9 @@
 
 #pragma mark LevelMenuDelegate
 
-- (void)selectLevel:(int)level fromGroup:(int)group {
+- (void)selectLevel:(NSString *)level {
     if (self.delegate && [self.delegate respondsToSelector:@selector(playLevel:)]) {
-        [self.delegate playLevel:[NSString stringWithFormat:@"%d-%d.tmx",group,level,nil]];
+        [self.delegate playLevel:level];
     }
 }
 

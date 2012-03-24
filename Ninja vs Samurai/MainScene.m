@@ -27,7 +27,7 @@
 
 + (MainScene *)sceneFromLevel:(NSString *)level {
     MainScene *scene = [self scene];
-    [scene.playMenu setCurrentMenu:[[level substringToIndex:[level rangeOfString:@"-"].length] intValue]-1 animated:NO];
+    [scene.playMenu showMenuForLevel:level];
     [scene playAction];
     return scene;
 }

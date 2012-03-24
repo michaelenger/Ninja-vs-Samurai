@@ -25,6 +25,9 @@
 // Initialize
 - (id)initWithDelegate:(id<PlayMenuDelegate>)delegate;
 
+// Show the menu for a specific level
+- (void)showMenuForLevel:(NSString *)level;
+
 // Set the current level menu
 - (void)setCurrentMenu:(unsigned int)currentMenu;
 - (void)setCurrentMenu:(unsigned int)currentMenu animated:(BOOL)animated;
