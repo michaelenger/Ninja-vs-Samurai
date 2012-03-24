@@ -130,21 +130,23 @@
         [self addChild:titleLabel];
 
         // Previous
-        self.previousButton = [CCMenuItemImage itemWithNormalImage:@"button-previous.png"
-                                                     selectedImage:@"button-previous-selected.png"
-                                                            target:self selector:@selector(previousMenu)];
+        self.previousButton = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"button-previous.png"]
+                                                     selectedSprite:[CCSprite spriteWithSpriteFrameName:@"button-previous-selected.png"]
+                                                             target:self selector:@selector(previousMenu)];
         self.previousButton.position = ccp(self.previousButton.contentSize.width,
                                            self.contentSize.height / 2);
 
         // Next
-        self.nextButton = [CCMenuItemImage itemWithNormalImage:@"button-next.png"
-                                                 selectedImage:@"button-next-selected.png"
-                                                        target:self selector:@selector(nextMenu)];
+        self.nextButton = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"button-next.png"]
+                                                 selectedSprite:[CCSprite spriteWithSpriteFrameName:@"button-next-selected.png"]
+                                                         target:self selector:@selector(nextMenu)];
         self.nextButton.position = ccp(self.contentSize.width - self.nextButton.contentSize.width,
                                        self.contentSize.height / 2);
         
         // Back
-        CCMenuItemImage *backButton = [CCMenuItemImage itemWithNormalImage:@"button-back.png" selectedImage:@"button-back-selected.png" block:^(id selector){
+        CCMenuItemImage *backButton = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"button-back.png"]
+                                                             selectedSprite:[CCSprite spriteWithSpriteFrameName:@"button-back-selected.png"]
+                                                                      block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(backAction)]) {
                 [self.delegate backAction];
             }

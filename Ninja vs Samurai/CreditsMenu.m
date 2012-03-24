@@ -93,7 +93,9 @@
                                                           url:@"soundcloud.com/evan-king"
                                                      position:ccp(self.contentSize.width / 2, y)];
         
-        CCMenuItemImage *backButton = [CCMenuItemImage itemWithNormalImage:@"button-back.png" selectedImage:@"button-back-selected.png" block:^(id selector){
+        CCMenuItemImage *backButton = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"button-back.png"]
+                                                             selectedSprite:[CCSprite spriteWithSpriteFrameName:@"button-back-selected.png"]
+                                                                      block:^(id selector){
             if (self.delegate && [self.delegate respondsToSelector:@selector(backAction)]) {
                 [self.delegate backAction];
             }

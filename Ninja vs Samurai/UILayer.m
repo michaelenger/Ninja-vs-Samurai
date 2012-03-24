@@ -39,18 +39,18 @@
 - (id)init {
     if ((self = [super init])) {
         // Reset button
-        CCMenuItemImage *resetButton = [CCMenuItemImage itemWithNormalImage:@"button-restart.png"
-                                                              selectedImage:@"button-restart-selected.png"
-                                                                      block:^(id sender){
+        CCMenuItemImage *resetButton = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"button-restart.png"]
+                                                              selectedSprite:[CCSprite spriteWithSpriteFrameName:@"button-restart-selected.png"]
+                                                                       block:^(id sender){
             if (self.delegate && [self.delegate respondsToSelector:@selector(resetAction)]) {
                 [self.delegate resetAction];
             }
         }];
 
         // Pause button
-        CCMenuItemImage *pauseButton = [CCMenuItemImage itemWithNormalImage:@"button-pause.png"
-                                                              selectedImage:@"button-pause-selected.png"
-                                                                      block:^(id sender){
+        CCMenuItemImage *pauseButton = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"button-pause.png"]
+                                                              selectedSprite:[CCSprite spriteWithSpriteFrameName:@"button-pause-selected.png"]
+                                                                       block:^(id sender){
             if (self.delegate && [self.delegate respondsToSelector:@selector(pauseAction)]) {
                 [self.delegate pauseAction];
             }
