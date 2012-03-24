@@ -71,7 +71,7 @@
     if (currentMenu >= LEVEL_GROUPS || currentMenu == _currentMenu) return;
 
     LevelMenu *current = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu];
-    LevelMenu *next = (LevelMenu *)[self.levelMenus objectAtIndex:self.currentMenu + (currentMenu > _currentMenu ? 1 : -1)];
+    LevelMenu *next = (LevelMenu *)[self.levelMenus objectAtIndex:currentMenu];
 
     if (animated) {
         float duration = 0.3;
