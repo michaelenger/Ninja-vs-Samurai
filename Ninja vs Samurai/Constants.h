@@ -27,3 +27,5 @@ extern unsigned int const LEVEL_COLUMNS;
 // Map sizes
 extern unsigned int const TILE_WIDTH;
 extern unsigned int const TILE_HEIGHT;
+extern unsigned int const TILE_WIDTH_IPAD;
+extern unsigned int const TILE_HEIGHT_IPAD;

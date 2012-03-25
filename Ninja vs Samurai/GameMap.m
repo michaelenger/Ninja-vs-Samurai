@@ -49,13 +49,27 @@ CGSize winSize;
 }
 
 - (CGPoint)translateMapPosition:(CGPoint)position {
-    return ccp(self.position.x + (position.x * TILE_WIDTH),
-               winSize.height - self.position.y - ((position.y + 1) * TILE_HEIGHT));
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // iPad
+        return ccp(self.position.x + (position.x * TILE_WIDTH_IPAD),
+                   winSize.height - self.position.y - ((position.y + 1) * TILE_HEIGHT_IPAD));
+    } else {
+        // iPhone
+        return ccp(self.position.x + (position.x * TILE_WIDTH),
+                   winSize.height - self.position.y - ((position.y + 1) * TILE_HEIGHT));
+    }
 }
 
 - (CGPoint)translatePosition:(CGPoint)position {
-    return ccp(floorf((position.x - self.position.x) / TILE_WIDTH),
-               floorf((self.contentSize.height - (position.y - self.position.y)) / TILE_HEIGHT));
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // iPad
+        return ccp(floorf((position.x - self.position.x) / TILE_WIDTH_IPAD),
+                   floorf((self.contentSize.height - (position.y - self.position.y)) / TILE_HEIGHT_IPAD));
+    } else {
+        // iPhone
+        return ccp(floorf((position.x - self.position.x) / TILE_WIDTH),
+                   floorf((self.contentSize.height - (position.y - self.position.y)) / TILE_HEIGHT));
+    }
 }
 
 #pragma mark CCTMXTiledMap

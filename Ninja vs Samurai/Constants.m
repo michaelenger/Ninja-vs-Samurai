@@ -24,3 +24,5 @@ unsigned int const LEVEL_COLUMNS = 6;
 
 unsigned int const TILE_WIDTH = 40;
 unsigned int const TILE_HEIGHT = 40;
+unsigned int const TILE_WIDTH_IPAD = 80;
+unsigned int const TILE_HEIGHT_IPAD = 80;
