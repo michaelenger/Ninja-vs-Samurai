@@ -7,6 +7,7 @@
 //
 
 #import "GameMap.h"
+#import "Constants.h"
 #import "Path.h"
 
 CGSize winSize;
@@ -48,13 +49,13 @@ CGSize winSize;
 }
 
 - (CGPoint)translateMapPosition:(CGPoint)position {
-    return ccp(self.position.x + (position.x * self.tileSize.width),
-               winSize.height - self.position.y - ((position.y + 1) * self.tileSize.height));
+    return ccp(self.position.x + (position.x * TILE_WIDTH),
+               winSize.height - self.position.y - ((position.y + 1) * TILE_HEIGHT));
 }
 
 - (CGPoint)translatePosition:(CGPoint)position {
-    return ccp(floorf((position.x - self.position.x) / self.tileSize.width),
-               floorf((self.contentSize.height - (position.y - self.position.y)) / self.tileSize.height));
+    return ccp(floorf((position.x - self.position.x) / TILE_WIDTH),
+               floorf((self.contentSize.height - (position.y - self.position.y)) / TILE_HEIGHT));
 }
 
 #pragma mark CCTMXTiledMap

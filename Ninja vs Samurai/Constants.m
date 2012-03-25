@@ -21,3 +21,6 @@ ccColor3B const FONT_COLOR_LIGHT = { 239,235,214 };
 unsigned int const LEVEL_GROUPS = 5;
 unsigned int const LEVEL_ROWS = 4;
 unsigned int const LEVEL_COLUMNS = 6;
+
+unsigned int const TILE_WIDTH = 40;
+unsigned int const TILE_HEIGHT = 40;

@@ -23,3 +23,7 @@ extern ccColor3B const FONT_COLOR_LIGHT;
 extern unsigned int const LEVEL_GROUPS;
 extern unsigned int const LEVEL_ROWS;
 extern unsigned int const LEVEL_COLUMNS;
+
+// Map sizes
+extern unsigned int const TILE_WIDTH;
+extern unsigned int const TILE_HEIGHT;
