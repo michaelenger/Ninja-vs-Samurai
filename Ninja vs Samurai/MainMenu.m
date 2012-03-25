@@ -61,7 +61,6 @@
 
 - (id)init {
     if ((self = [super init])) {
-        unsigned int padding = FONT_SIZE_MED * 1.5;
         
         // Title
         CCSprite *title = [CCSprite spriteWithSpriteFrameName:@"title.png"];
@@ -72,6 +71,8 @@
         self.ninja = [CCSprite spriteWithSpriteFrameName:@"player.png"];
         self.ninja.position = ccp(self.ninja.contentSize.width * 2.5, -self.ninja.contentSize.height);
         [self addChild:self.ninja];
+
+        unsigned int padding = (self.contentSize.width - title.contentSize.width) / 2;
 
         // Play Button
         CCLabelBMFont *playLabel = [CCLabelBMFont labelWithString:@"Play Game" fntFile:FONT_MEDIUM];
