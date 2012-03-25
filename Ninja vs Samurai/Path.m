@@ -31,7 +31,6 @@
 #pragma mark Class Methods
 
 + (Path *)pathWithMap:(NSArray *)map from:(CGPoint)origin to:(CGPoint)destination {
-    
 
     Path *path = [[self alloc] init];
     path.nodes = [path search:[path buildNodeMapFromMap:map] from:origin to:destination];
@@ -188,6 +187,10 @@
             }
         }
     }
+
+    // Cleanup
+    [openList release];
+    [closedList release];
 
     // No result was found -- empty variable signifies failure to find path
     return nil;

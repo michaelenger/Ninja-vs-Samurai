@@ -112,6 +112,7 @@ NSMutableArray *_moves;
 
     [_moves removeObjectAtIndex:0];
     if ([_moves count] == 0) {
+        NSLog(@"MOVES: %d", [_moves retainCount]);
         [_moves release];
         _moves = nil;
     }
@@ -130,7 +131,7 @@ NSMutableArray *_moves;
 - (void)reset {
     // Remove moves
     if (_moves) {
-        [_moves removeAllObjects];
+        [_moves release];
     }
     _moves = nil;
 
@@ -248,8 +249,7 @@ NSMutableArray *_moves;
     if (![self.map isOpen:destination]) {
         return;
     }
-    
-    _moves = nil;
+
     NSArray *nodes = [self.map pathFrom:origin to:destination];
     if (nodes) {
         _moves = [[NSMutableArray arrayWithArray:nodes] retain];
