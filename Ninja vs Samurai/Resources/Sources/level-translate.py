@@ -20,6 +20,11 @@ replaces = {
 		'width' : 'tilewidth="80"',
 		'height' : 'tileheight="80"',
 		'image' : '<image source="tiles-hd.png" width="512" height="512"/>'
+	},
+	'ipad' : {
+		'width' : 'tilewidth="80"',
+		'height' : 'tileheight="80"',
+		'image' : '<image source="tiles-ipad.png" width="512" height="512"/>'
 	}
 }
 
