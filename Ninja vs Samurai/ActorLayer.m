@@ -244,7 +244,7 @@ NSMutableArray *_moves;
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
     CGPoint origin = self.player.mapPosition;
     CGPoint destination = [self.map translatePosition:[self convertTouchToNodeSpace: touch]];
-    
+
     if (![self.map isOpen:destination]) {
         return;
     }

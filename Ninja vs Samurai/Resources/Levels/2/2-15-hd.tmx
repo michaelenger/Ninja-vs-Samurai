@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="5" height="5" tilewidth="80" tileheight="80">
+ <properties>
+  <property name="moves" value="13"/>
+ </properties>
+ <tileset firstgid="1" name="tiles" tilewidth="80" tileheight="80" spacing="2" margin="2">
+  <image source="tiles-hd.png" width="512" height="512"/>
+  <tile id="0">
+   <properties>
+    <property name="actor" value="exit"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="actor" value="guard"/>
+    <property name="direction" value="down"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="actor" value="guard"/>
+    <property name="direction" value="left"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="actor" value="guard"/>
+    <property name="direction" value="right"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="actor" value="guard"/>
+    <property name="direction" value="up"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="actor" value="player"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="actor" value="scroll"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Level" width="5" height="5">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYAJiLiQaxkbGXGhy2NRgUwvCABpsAIs=
+  </data>
+ </layer>
+ <layer name="Actors" width="5" height="5">
+  <data encoding="base64" compression="zlib">
+   eJxjYEAADgZMwALEnFjEcaljxCIHAAfQACQ=
+  </data>
+ </layer>
+</map>
