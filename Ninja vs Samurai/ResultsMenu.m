@@ -25,6 +25,10 @@
 - (id)initWithTitle:(NSString *)title {
     if ((self = [self init])) {
         self.contentSize = [CCDirector sharedDirector].winSize;
+        unsigned int fontSize = FONT_SIZE_SML;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            fontSize = FONT_SIZE_MED;
+        }
         
         // Overlay
         CCSprite *overlay = [CCSprite spriteWithSpriteFrameName:@"overlay.png"];
@@ -42,9 +46,9 @@
                                           self.contentSize.height * 0.55);
         [self addChild:self.completedStar];
         CCLabelTTF *completedLabel = [CCLabelTTF labelWithString:@"COMPLETED LEVEL"
-                                                      dimensions:CGSizeMake(self.completedStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)
+                                                      dimensions:CGSizeMake(self.completedStar.contentSize.width * 1.5, fontSize * 3)
                                                        alignment:UITextAlignmentCenter
-                                                        fontName:FONT_NAME fontSize:FONT_SIZE_SML];
+                                                        fontName:FONT_NAME fontSize:fontSize];
         completedLabel.position = ccp(self.completedStar.position.x,
                                       self.completedStar.position.y - (self.completedStar.contentSize.height * 0.6));
         completedLabel.color = FONT_COLOR_LIGHT;
@@ -55,9 +59,9 @@
                                       self.contentSize.height * 0.55);
         [self addChild:self.movesStar];
         CCLabelTTF *movesLabel = [CCLabelTTF labelWithString:@"UNDER PAR MOVES"
-                                                  dimensions:CGSizeMake(self.movesStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)
+                                                  dimensions:CGSizeMake(self.movesStar.contentSize.width * 1.5, fontSize * 3)
                                                    alignment:UITextAlignmentCenter
-                                                    fontName:FONT_NAME fontSize:FONT_SIZE_SML];
+                                                    fontName:FONT_NAME fontSize:fontSize];
         
         movesLabel.position = ccp(self.movesStar.position.x,
                                   self.movesStar.position.y - (self.movesStar.contentSize.height * 0.6));
@@ -69,9 +73,9 @@
                                         self.contentSize.height * 0.55);
         [self addChild:self.scrollsStar];
         CCLabelTTF *scrollsLabel = [CCLabelTTF labelWithString:@"GOT ALL SCROLLS"
-                                                    dimensions:CGSizeMake(self.scrollsStar.contentSize.width * 1.5, FONT_SIZE_SML * 3)
+                                                    dimensions:CGSizeMake(self.scrollsStar.contentSize.width * 1.5, fontSize * 3)
                                                      alignment:UITextAlignmentCenter
-                                                      fontName:FONT_NAME fontSize:FONT_SIZE_SML];
+                                                      fontName:FONT_NAME fontSize:fontSize];
         scrollsLabel.position = ccp(self.scrollsStar.position.x,
                                     self.scrollsStar.position.y - (self.scrollsStar.contentSize.height * 0.6));
         scrollsLabel.color = FONT_COLOR_LIGHT;
