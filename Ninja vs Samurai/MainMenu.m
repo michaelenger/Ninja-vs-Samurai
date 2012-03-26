@@ -73,6 +73,9 @@
         [self addChild:self.ninja];
 
         unsigned int padding = (self.contentSize.width - title.contentSize.width) * 0.7;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            padding = (self.contentSize.width - title.contentSize.width) * 0.5;
+        }
 
         // Play Button
         CCLabelBMFont *playLabel = [CCLabelBMFont labelWithString:@"Play Game" fntFile:FONT_MEDIUM];
