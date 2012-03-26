@@ -72,7 +72,7 @@
         self.ninja.position = ccp(self.ninja.contentSize.width * 2.5, -self.ninja.contentSize.height);
         [self addChild:self.ninja];
 
-        unsigned int padding = (self.contentSize.width - title.contentSize.width) / 2;
+        unsigned int padding = (self.contentSize.width - title.contentSize.width) * 0.7;
 
         // Play Button
         CCLabelBMFont *playLabel = [CCLabelBMFont labelWithString:@"Play Game" fntFile:FONT_MEDIUM];
