@@ -57,7 +57,8 @@
         
         self.menu = [CCMenu menuWithItems:quit,replay,next,nil];
         self.menu.position = ccp(self.contentSize.width / 2, (quitLabel.contentSize.height * 1.25));
-        [self.menu alignItemsHorizontallyWithPadding:FONT_SIZE_MED];
+        unsigned int padding = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? FONT_SIZE_BIG : FONT_SIZE_MED);
+        [self.menu alignItemsHorizontallyWithPadding:padding];
         [self addChild:self.menu];
     }
     return self;
