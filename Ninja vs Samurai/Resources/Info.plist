@@ -9,13 +9,15 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>iTunesArtwork.png</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon.png</string>
 		<string>Icon@2x.png</string>
 		<string>Icon~ipad.png</string>
+		<string>Icon@2x~ipad.png</string>
 		<string>Icon-Small-50.png</string>
+		<string>Icon-Small-50@2x</string>
 		<string>Icon-Small.png</string>
 		<string>Icon-Small@2x.png</string>
 	</array>

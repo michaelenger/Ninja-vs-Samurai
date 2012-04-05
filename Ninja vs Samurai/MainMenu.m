@@ -74,7 +74,7 @@
 
         unsigned int padding = (self.contentSize.width - title.contentSize.width) * 0.7;
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            padding = (self.contentSize.width - title.contentSize.width) * 0.5;
+            padding = (self.contentSize.width - title.contentSize.width);
         }
 
         // Play Button

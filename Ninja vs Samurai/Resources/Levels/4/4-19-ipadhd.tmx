@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="7" height="7" tilewidth="160" tileheight="160">
+ <properties>
+  <property name="moves" value="22"/>
+ </properties>
+ <tileset firstgid="1" name="tiles" tilewidth="160" tileheight="160" spacing="2" margin="2">
+  <image source="tiles-ipadhd.png" width="1024" height="1024"/>
+  <tile id="0">
+   <properties>
+    <property name="actor" value="exit"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="actor" value="guard"/>
+    <property name="direction" value="down"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="actor" value="guard"/>
+    <property name="direction" value="left"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="actor" value="guard"/>
+    <property name="direction" value="right"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="actor" value="guard"/>
+    <property name="direction" value="up"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="actor" value="player"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="actor" value="scroll"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="wall" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Level" width="7" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYMKDuZAwExKNzsYlR44+dIzPfSAMAFdsAOM=
+  </data>
+ </layer>
+ <layer name="Actors" width="7" height="7">
+  <data encoding="base64" compression="zlib">
+   eJxjZUAFnAy4ARsWMUYgZsGjBxcA2cOKxGcmoJ4DSR8MwOwFABd8AEA=
+  </data>
+ </layer>
+</map>
