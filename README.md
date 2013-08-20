@@ -1,6 +1,13 @@
 # Ninja vs Samurai
 
-iOS port of the LÖVE game of the same name.
+2D puzzle game where you must avoid the samurai and pick up scrolls while getting to the end of the level in the least amount of moves.
+
+## Screenshots
+
+![Main Menu](https://raw.github.com/michaelenger/Ninja-vs-Samurai/master/screenshot-1.png)
+![Gameplay](https://raw.github.com/michaelenger/Ninja-vs-Samurai/master/screenshot-2.png)
+![End Level](https://raw.github.com/michaelenger/Ninja-vs-Samurai/master/screenshot-3.png)
+
 
 ## License
 
