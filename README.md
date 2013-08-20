@@ -2,6 +2,10 @@
 
 2D puzzle game where you must avoid the samurai and pick up scrolls while getting to the end of the level in the least amount of moves.
 
+## Requirements
+
+* iOS 5
+
 ## Screenshots
 
 ![Main Menu](https://raw.github.com/michaelenger/Ninja-vs-Samurai/master/screenshot-1.png)
